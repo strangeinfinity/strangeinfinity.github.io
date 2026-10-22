@@ -44,14 +44,14 @@ const SI_CONFIG = {
       featured: true,
       status:   'active',
       color:    'crimson',
-      desc:     'Debian GNU/Linux 13 (Trixie) rootless terminal CLI environment for Android powered by PRoot virtualization, passwordless sudo, SD card storage bridge, and developer keyboard.',
+      desc:     'Debian GNU/Linux 13 (Trixie) rootless terminal CLI workstation for Android built in native Kotlin & Jetpack, powered by PRoot virtualization, passwordless sudo, and SD card storage bridge.',
       features: [
+        'Built with native Kotlin & modern Android Jetpack architecture',
         'Debian 13 (Trixie) full apt package ecosystem',
         '100% rootless PRoot virtualization (Knox safe)',
         'Native passwordless sudo & PAM bridge',
         'Direct /sdcard & internal phone storage access',
         'Custom developer coding keyboard toolbar',
-        'Multi-session concurrent terminal tabs',
       ],
       links: {
         github:   'https://github.com/dev-hints/Dedroid',
@@ -59,7 +59,7 @@ const SI_CONFIG = {
         demo:     'https://www.strangeinfinity.store/Dedroid/',
         docs:     'https://www.strangeinfinity.store/Dedroid/docs.html',
       },
-      tags: ['Android', 'Debian', 'Linux', 'Terminal', 'PRoot'],
+      tags: ['Kotlin', 'Android', 'Debian', 'Linux', 'PRoot'],
     },
     {
       id:       'markview',
@@ -184,7 +184,7 @@ const SI_CONFIG = {
       id:       'notes-app',
       name:     'Cosmic Notes App',
       icon:     '<i class="fa-solid fa-note-sticky" style="color:var(--color-pink)"></i>',
-      featured: true,
+      featured: false,
       status:   'active',
       color:    'pink',
       desc:     'A visually stunning, highly interactive frontend-only Notes Application that brings a deep space experience right into your browser.',
@@ -207,7 +207,7 @@ const SI_CONFIG = {
       id:       '2048-nexus',
       name:     '2048 Nexus',
       icon:     '<i class="fa-solid fa-gamepad" style="color:var(--color-emerald)"></i>',
-      featured: true,
+      featured: false,
       status:   'active',
       color:    'emerald',
       desc:     'Production-grade 2048 desktop game built with Python and PyQt6, featuring Expectimax AI auto-play, multiple grid modes, neon themes, and standalone installers (.exe, .deb, .rpm).',
@@ -231,7 +231,7 @@ const SI_CONFIG = {
       id:       'snake-game',
       name:     'Neon Snake Game',
       icon:     '<i class="fa-solid fa-staff-snake" style="color:#22c55e"></i>',
-      featured: true,
+      featured: false,
       status:   'active',
       color:    'emerald',
       desc:     'Arcade retro-futuristic Snake game with HTML5 Canvas, glowing particle bursts, power-ups, and synthesized Web Audio sound.',
@@ -254,7 +254,7 @@ const SI_CONFIG = {
       id:       'gemini-cli',
       name:     'Gemini CLI Chatbot',
       icon:     '<i class="fa-solid fa-terminal" style="color:#06b6d4"></i>',
-      featured: true,
+      featured: false,
       status:   'active',
       color:    'cyan',
       desc:     'Ultra-fast terminal AI companion written 100% in pure Bash. Chat in interactive REPL, pipe Unix commands, and stream responses in real-time.',
@@ -277,7 +277,7 @@ const SI_CONFIG = {
       id:       'calccosmos',
       name:     'CalcCosmos Calculator',
       icon:     '<i class="fa-solid fa-calculator" style="color:#f59e0b"></i>',
-      featured: true,
+      featured: false,
       status:   'active',
       color:    'amber',
       desc:     'High-precision scientific computation engine with cosmic glassmorphism UI, trigonometric operations, and persistent calculation history.',
@@ -300,7 +300,7 @@ const SI_CONFIG = {
       id:       'to-do',
       name:     'ToDo Task Manager',
       icon:     '<i class="fa-solid fa-square-check" style="color:#14b8a6"></i>',
-      featured: true,
+      featured: false,
       status:   'active',
       color:    'cyan',
       desc:     'Distraction-free personal task management and Pomodoro workstation built with cosmic glassmorphism and 100% local persistence.',
@@ -328,8 +328,8 @@ const SI_CONFIG = {
       title:    'Dedroid Terminal on Android',
       icon:     '<i class="fa-brands fa-debian" style="color:#d70a53"></i>',
       status:   'active',
-      desc:     'Debian GNU/Linux 13 (Trixie) rootless terminal workstation for Android with PRoot virtualization, sudo bridge, and extra-keys toolbar.',
-      tags:     ['Android', 'Debian', 'Linux', 'Shell'],
+      desc:     'Debian GNU/Linux 13 (Trixie) rootless terminal workstation for Android built in Kotlin with PRoot virtualization and custom developer keyboard.',
+      tags:     ['Kotlin', 'Android', 'Debian', 'Shell'],
       github:   'https://github.com/dev-hints/Dedroid',
       download: 'https://github.com/dev-hints/Dedroid/releases/download/First-Release/dedroid-signed.apk',
       demo:     'https://www.strangeinfinity.store/Dedroid/',
@@ -452,11 +452,13 @@ const SI_CONFIG = {
 
   /* ── Technology Stack ── */
   technologies: [
+    { name: 'Kotlin',      icon: '<i class="devicon-kotlin-plain colored"></i>', level: 90, color: '#7F52FF' },
+    { name: 'Android',     icon: '<i class="devicon-android-plain colored"></i>', level: 88, color: '#3ddc84' },
+    { name: 'Python',      icon: '<i class="devicon-python-plain colored"></i>', level: 92, color: '#3776ab' },
+    { name: 'Rust',        icon: '<i class="devicon-rust-plain colored"></i>', level: 85, color: '#dea584' },
+    { name: 'JavaScript',  icon: '<i class="devicon-javascript-plain colored"></i>', level: 90, color: '#f7df1e' },
     { name: 'HTML5',       icon: '<i class="devicon-html5-plain colored"></i>', level: 95, color: '#e34f26' },
     { name: 'CSS3',        icon: '<i class="devicon-css3-plain colored"></i>', level: 92, color: '#1572b6' },
-    { name: 'JavaScript',  icon: '<i class="devicon-javascript-plain colored"></i>', level: 90, color: '#f7df1e' },
-    { name: 'Python',      icon: '<i class="devicon-python-plain colored"></i>', level: 88, color: '#3776ab' },
-    { name: 'Rust',        icon: '<i class="devicon-rust-plain colored"></i>', level: 85, color: '#dea584' },
     { name: 'FastAPI',     icon: '<i class="devicon-fastapi-plain colored"></i>', level: 88, color: '#009688' },
     { name: 'Docker',      icon: '<i class="devicon-docker-plain colored"></i>', level: 86, color: '#2496ed' },
     { name: 'OpenCV',      icon: '<i class="devicon-opencv-plain colored"></i>', level: 80, color: '#5C3EE8' },
@@ -626,24 +628,19 @@ const ProjectRenderer = (() => {
     });
   }
 
-  let productsExpanded = false;
-  const PRODUCTS_INITIAL_COUNT = 4;
-
   /** Render featured products (Minimal, Clean & Professional) */
   function renderProducts() {
     const container = document.getElementById('products-grid');
     if (!container) return;
 
-    const visibleProducts = productsExpanded
-      ? SI_CONFIG.products
-      : SI_CONFIG.products.slice(0, PRODUCTS_INITIAL_COUNT);
+    const flagshipProducts = SI_CONFIG.products.filter(p => p.featured);
 
-    container.innerHTML = visibleProducts.map((p, i) => {
-      const primaryBadge = p.tags && p.tags[0] ? p.tags[0] : 'Open Source';
+    container.innerHTML = flagshipProducts.map((p, i) => {
+      const primaryBadge = p.tags && p.tags[0] ? p.tags[0] : 'Flagship';
       const visibleTags = (p.tags || []).slice(0, 3);
 
       return `
-      <article class="product-card ${p.featured ? 'featured' : ''} reveal revealed"
+      <article class="product-card featured reveal revealed"
                role="article" aria-label="${p.name}">
         <div class="product-card-top">
           <div class="product-icon-wrap" aria-hidden="true">${p.icon}</div>
@@ -674,36 +671,6 @@ const ProjectRenderer = (() => {
       </article>
       `;
     }).join('');
-
-    updateProductsToggleButton();
-  }
-
-  function updateProductsToggleButton() {
-    const toggleBtn = document.getElementById('products-toggle-btn');
-    if (!toggleBtn) return;
-
-    const remaining = SI_CONFIG.products.length - PRODUCTS_INITIAL_COUNT;
-    if (productsExpanded) {
-      toggleBtn.innerHTML = '<i class="fa-solid fa-chevron-up"></i> <span>Show Fewer Products</span>';
-      toggleBtn.setAttribute('aria-expanded', 'true');
-    } else {
-      toggleBtn.innerHTML = `<i class="fa-solid fa-chevron-down"></i> <span>View All Products (${remaining} more)</span>`;
-      toggleBtn.setAttribute('aria-expanded', 'false');
-    }
-  }
-
-  function setupProductsToggle() {
-    const toggleBtn = document.getElementById('products-toggle-btn');
-    if (!toggleBtn) return;
-
-    toggleBtn.addEventListener('click', () => {
-      productsExpanded = !productsExpanded;
-      renderProducts();
-      if (!productsExpanded) {
-        const section = document.getElementById('products');
-        if (section) section.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
   }
 
   /** Render tech stack */
@@ -844,7 +811,6 @@ const ProjectRenderer = (() => {
   function init() {
     renderProjects();
     renderProducts();
-    setupProductsToggle();
     renderTech();
     renderRepos();
     renderTimeline();

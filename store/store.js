@@ -21,8 +21,9 @@ const APPS_DATA = [
     sizeBytes: 85983232,
     version: 'v1.0.0',
     icon: '../Dedroid/icons/dedroid.png',
-    summary: 'Run a full Linux command line environment directly on your Android phone or tablet. Install programming languages, edit code, and manage files without rooting your device.',
+    summary: 'Native Android application built in Kotlin. Run a full Debian Linux command line environment directly on your Android phone or tablet. Install programming languages, edit code, and manage files without rooting your device.',
     highlights: [
+      'Engineered in native Kotlin & Android Jetpack architecture',
       'Full Linux terminal environment for your Android phone or tablet',
       'Run Python, C/C++, Rust, Node.js, Git, and Vim directly on mobile',
       'Access files on your internal storage and SD card safely',
@@ -57,7 +58,7 @@ const APPS_DATA = [
         recommended: false
       }
     ],
-    keywords: ['apk', 'android', 'linux', 'terminal', 'debian', 'shell', 'bash', 'coding', 'rootless', 'cli', 'environment', 'sudo'],
+    keywords: ['kotlin', 'android', 'apk', 'linux', 'terminal', 'debian', 'shell', 'bash', 'coding', 'rootless', 'cli', 'environment', 'sudo'],
     portalUrl: '../Dedroid/',
     docsUrl: '../Dedroid/docs.html',
     githubUrl: 'https://github.com/dev-hints/Dedroid',
@@ -902,7 +903,16 @@ const AppStore = (() => {
 
     if (emptyEl) emptyEl.style.display = 'none';
 
-    gridEl.innerHTML = filtered.map(app => `
+    gridEl.innerHTML = filtered.map(app => {
+      const isWeb = app.category === 'web-apps';
+      const actionIcon = isWeb
+        ? (app.primaryDownload.format === 'Web Game' ? 'fa-gamepad' : 'fa-arrow-up-right-from-square')
+        : 'fa-download';
+      const actionText = isWeb
+        ? (app.primaryDownload.format === 'Web Game' ? 'Play' : 'Open')
+        : (app.primaryDownload.format === 'APK' ? 'Get APK' : 'Download');
+
+      return `
       <article class="app-card" onclick="AppStore.openModalById('${escapeHTML(app.id)}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();AppStore.openModalById('${escapeHTML(app.id)}');}" tabindex="0" role="button" aria-label="${escapeHTML(app.name)} details">
         <div class="app-card-header">
           <img src="${sanitizeUrl(app.icon)}" alt="${escapeHTML(app.name)}" class="app-icon" loading="lazy" width="52" height="52" />
@@ -917,12 +927,13 @@ const AppStore = (() => {
           </div>
         </div>
         <div class="app-action" onclick="event.stopPropagation()">
-          <a href="${sanitizeUrl(app.primaryDownload.url)}" ${app.primaryDownload.url.startsWith('http') ? 'download rel="noopener noreferrer"' : ''} class="btn-install btn-sm" aria-label="Download ${escapeHTML(app.name)}">
-            <i class="fa-solid fa-download"></i> <span>${escapeHTML(app.primaryDownload.label)}</span>
+          <a href="${sanitizeUrl(app.primaryDownload.url)}" ${app.primaryDownload.url.startsWith('http') ? 'download rel="noopener noreferrer"' : ''} class="btn-install btn-sm" aria-label="${actionText} ${escapeHTML(app.name)}">
+            <i class="fa-solid ${actionIcon}"></i> <span>${actionText}</span>
           </a>
         </div>
       </article>
-    `).join('');
+      `;
+    }).join('');
 
     updateURL();
   }

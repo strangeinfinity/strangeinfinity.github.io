@@ -297,6 +297,9 @@
         <p>
           Unlike standard Android chroots or virtual machines that require root access or heavy hardware emulation (QEMU), Dedroid intercepts Linux system calls using <code>ptrace</code> through PRoot. This enables standard Debian ELF binaries to execute directly on the host ARM or x86 processor at native speeds while presenting an isolated Unix root filesystem.
         </p>
+        <p>
+          The Android host client is engineered entirely in <strong>native Kotlin</strong> leveraging Google's modern Android Jetpack architecture, Kotlin Coroutines for non-blocking I/O with the terminal pseudo-terminal (PTY) daemon, and Android Foreground Services to keep background compilation tasks alive.
+        </p>
         <div class="code-block">
 Android Device Userspace
  ├── Dedroid Terminal Activity (Kotlin + Jetpack)

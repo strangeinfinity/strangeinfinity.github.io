@@ -131,7 +131,7 @@ The StrangeInfinity portal highlights several flagship software products and ope
   <tr>
     <td width="50%" valign="top">
       <h3>Dedroid (Debian on Android)</h3>
-      <p>Debian GNU/Linux 13 (Trixie) rootless terminal workstation for Android with PRoot virtualization, passwordless sudo, SD card storage bridge, and developer keyboard toolbar.</p>
+      <p>Native Android application built in Kotlin featuring a Debian GNU/Linux 13 (Trixie) rootless terminal workstation powered by PRoot virtualization, passwordless sudo, SD card storage bridge, and developer keyboard toolbar.</p>
       <p>
         <a href="https://www.strangeinfinity.store/Dedroid/"><strong>Portal »</strong></a> • 
         <a href="https://www.strangeinfinity.store/Dedroid/docs.html"><strong>Docs »</strong></a> • 
