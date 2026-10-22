@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCEZHSD62X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RCEZHSD62X');
+  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/2048-infinity.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/2048-infinity.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/2048-infinity.png" />
+
+  <!-- Security Headers & Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://img.shields.io https://avatars.githubusercontent.com https://github.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2048-Infinity Documentation — Architecture, Mechanics &amp; Developer Guide</title>
+  <meta name="title" content="2048-Infinity Documentation — Architecture, Mechanics &amp; Developer Guide" />
+  <meta name="description" content="Official technical documentation for 2048-Infinity. Jetpack Compose Material 3 architecture, deterministic game engine rules, 64-bit integer engine, synthesized audio and haptics, DataStore persistence, and Gradle build instructions." />
+  <meta name="keywords" content="2048-Infinity documentation, 2048 android docs, Jetpack Compose game guide, Kotlin puzzle engine, DataStore preferences, android game architecture" />
+  <meta name="author" content="StrangeInfinity" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.strangeinfinity.store/2048-Infinity/docs.html" />
+  <meta name="theme-color" content="#6366f1" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.strangeinfinity.store/2048-Infinity/docs.html" />
+  <meta property="og:site_name" content="2048-Infinity Docs" />
+  <meta property="og:title" content="2048-Infinity Documentation — Architecture, Mechanics &amp; Developer Guide" />
+  <meta property="og:description" content="Technical documentation covering Kotlin Clean Architecture, Jetpack Compose rendering, game engine state transitions, and persistence for 2048-Infinity." />
+  <meta property="og:image" content="https://www.strangeinfinity.store/2048-Infinity/icons/2048-infinity.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@strang3infinity" />
+  <meta name="twitter:title" content="2048-Infinity Documentation — Architecture, Mechanics &amp; Developer Guide" />
+  <meta name="twitter:description" content="Technical documentation covering Kotlin Clean Architecture, Jetpack Compose rendering, game engine state transitions, and persistence for 2048-Infinity." />
+  <meta name="twitter:image" content="https://www.strangeinfinity.store/2048-Infinity/icons/2048-infinity.png" />
+
+  <!-- JSON-LD TechArticle Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "2048-Infinity Documentation — Architecture, Mechanics & Developer Guide",
+    "description": "Comprehensive technical manual for 2048-Infinity native Android puzzle game built with Kotlin and Jetpack Compose.",
+    "url": "https://www.strangeinfinity.store/2048-Infinity/docs.html",
+    "image": "https://www.strangeinfinity.store/2048-Infinity/icons/2048-infinity.png",
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "2048-Infinity",
+      "operatingSystem": "Android 8.0+",
+      "downloadUrl": "https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "StrangeInfinity",
+      "url": "https://www.strangeinfinity.store/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "StrangeInfinity",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.strangeinfinity.store/assets/images/logo.png"
+      }
+    },
+    "datePublished": "2026-10-22T00:00:00+00:00",
+    "dateModified": "2026-10-22T12:00:00+00:00"
+  }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" integrity="sha512-X2hbziex+UPQ+KdI4BWI+39jEDhf2Smc6bfFI/FTIzWnt7mbwZCUU4RWalnMfxtHCpISlexzmd2kvPFJCliiPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Site Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+
+  <!-- Custom Documentation Layout Styles -->
+  <style>
+    .docs-container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-8);
+      padding-top: calc(var(--nav-height) + var(--space-8));
+      padding-bottom: var(--space-20);
+    }
+    @media (max-width: 992px) {
+      .docs-container { grid-template-columns: 1fr; }
+      .docs-sidebar { position: static !important; width: 100% !important; }
+    }
+    .docs-sidebar {
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-6));
+      height: fit-content;
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .docs-toc-title {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .docs-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .docs-nav-link {
+      display: block;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: var(--radius-md);
+      transition: var(--transition-fast);
+    }
+    .docs-nav-link:hover, .docs-nav-link.active {
+      color: #fff;
+      background: rgba(99, 102, 241, 0.15);
+      border-left: 2px solid #6366f1;
+    }
+    .docs-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-12);
+    }
+    .docs-section {
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      scroll-margin-top: calc(var(--nav-height) + var(--space-6));
+    }
+    .docs-section h2 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      color: var(--text-primary);
+    }
+    .docs-section h3 {
+      font-size: var(--text-lg);
+      margin: var(--space-6) 0 var(--space-3) 0;
+      color: #38bdf8;
+    }
+    .docs-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: var(--space-4);
+    }
+    .code-block {
+      background: #090c15;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin: var(--space-4) 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: #c9d1d9;
+      overflow-x: auto;
+    }
+    .sidebar-apk-btn {
+      width: 100%;
+      justify-content: center;
+      border-color: rgba(99, 102, 241, 0.4);
+      color: #38bdf8;
+      transition: var(--transition-normal);
+    }
+    .sidebar-apk-btn:hover {
+      background: linear-gradient(135deg, #6366f1 0%, #38bdf8 100%) !important;
+      border-color: transparent !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+    }
+    .sidebar-apk-btn span {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ CANVAS BACKGROUND ═══════════════ -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<header role="banner">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo" aria-label="StrangeInfinity Home">
+        <img src="../assets/images/logo-icon.png" alt="StrangeInfinity" width="38" height="38" loading="lazy" />
+        <span>Strange<span style="color:var(--color-secondary)">Infinity</span></span>
+      </a>
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> 2048-Infinity Home</a></li>
+        <li><a href="#overview" class="nav-link active">Overview</a></li>
+        <li><a href="#architecture" class="nav-link">Architecture</a></li>
+        <li><a href="#engine" class="nav-link">Game Engine</a></li>
+        <li><a href="#persistence" class="nav-link">Persistence</a></li>
+        <li><a href="#building" class="nav-link">Build Guide</a></li>
+      </ul>
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk" download class="btn btn-primary btn-sm"><span><i class="fa-solid fa-download"></i> Download APK</span></a>
+        <button id="hamburger" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html" class="nav-link"><i class="fa-solid fa-gamepad"></i> 2048-Infinity Home</a>
+    <a href="#overview" class="nav-link"><i class="fa-solid fa-circle-info"></i> Overview</a>
+    <a href="#architecture" class="nav-link"><i class="fa-solid fa-sitemap"></i> Architecture</a>
+    <a href="#engine" class="nav-link"><i class="fa-solid fa-calculator"></i> Game Engine</a>
+    <a href="#ui-animation" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> UI &amp; Compose</a>
+    <a href="#sound-haptics" class="nav-link"><i class="fa-solid fa-wave-square"></i> Audio &amp; Haptics</a>
+    <a href="#persistence" class="nav-link"><i class="fa-solid fa-database"></i> Persistence</a>
+    <a href="#building" class="nav-link"><i class="fa-solid fa-hammer"></i> Build from Source</a>
+    <a href="https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk" download class="nav-link"><i class="fa-solid fa-download"></i> Download APK</a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="docs-container">
+
+    <!-- Sticky Sidebar -->
+    <aside class="docs-sidebar">
+      <div class="docs-toc-title"><i class="fa-solid fa-book-bookmark"></i> Table of Contents</div>
+      <nav aria-label="Documentation Navigation">
+        <ul class="docs-nav-list">
+          <li><a href="#overview" class="docs-nav-link active">1. Overview &amp; Specifications</a></li>
+          <li><a href="#architecture" class="docs-nav-link">2. Clean Architecture &amp; MVVM</a></li>
+          <li><a href="#engine" class="docs-nav-link">3. Mathematical Game Engine</a></li>
+          <li><a href="#ui-animation" class="docs-nav-link">4. Compose &amp; Lambda Offset UI</a></li>
+          <li><a href="#sound-haptics" class="docs-nav-link">5. Audio Synthesis &amp; Haptics</a></li>
+          <li><a href="#persistence" class="docs-nav-link">6. DataStore Persistence</a></li>
+          <li><a href="#installation" class="docs-nav-link">7. APK Installation &amp; Verify</a></li>
+          <li><a href="#building" class="docs-nav-link">8. Building from Source</a></li>
+          <li><a href="#privacy" class="docs-nav-link">9. Permissions &amp; Privacy</a></li>
+        </ul>
+      </nav>
+
+      <div style="margin-top:var(--space-6);padding-top:var(--space-4);border-top:var(--glass-border);">
+        <a href="https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk" download class="btn btn-outline btn-sm sidebar-apk-btn">
+          <span><i class="fa-solid fa-download"></i> Get Release APK (11 MB)</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="docs-content">
+
+      <!-- 1. Overview -->
+      <section id="overview" class="docs-section">
+        <h2><i class="fa-solid fa-gamepad" style="color:#6366f1"></i> 1. Overview &amp; Specifications</h2>
+        <p>
+          <strong>2048-Infinity</strong> is an original, production-grade native Android puzzle game developed by <strong>StrangeInfinity</strong>. Built from the ground up with <strong>Kotlin 2.0.21</strong> and <strong>Jetpack Compose Material 3</strong>, it delivers high-performance sliding-tile mechanics elevated with an infinite 64-bit numerical engine, hardware-accelerated animations running at 60/120Hz display refresh rates, persistent local state, rich player statistics, deterministic challenge seeds, and complete offline privacy.
+        </p>
+        <p>
+          The game declares <strong>zero internet permissions</strong> (<code>android.permission.INTERNET</code> is completely omitted), ensuring that zero bytes of player gameplay or analytics ever leave the device.
+        </p>
+
+        <div class="code-block">
+Technical Specifications:
+• Package Name:        com.strangeinfinity.infinitytiles
+• Language:            Kotlin 2.0.21
+• UI Framework:        Jetpack Compose (BOM 2024.10.00) + Material 3
+• Minimum SDK:         Android 8.0 Oreo (API 26)
+• Target &amp; Compile SDK: Android 14 (API 34)
+• JVM Target:          Java 21
+• Build System:        Gradle 8.10 + AGP 8.6.0
+• Persistence:         Jetpack DataStore Preferences 1.1.1
+• Concurrency:         Kotlinx Coroutines 1.9.0 + StateFlow
+• Packaging Size:      11 MB (.apk)
+        </div>
+      </section>
+
+      <!-- 2. Clean Architecture -->
+      <section id="architecture" class="docs-section">
+        <h2><i class="fa-solid fa-sitemap" style="color:#38bdf8"></i> 2. Clean Architecture &amp; MVVM Pattern</h2>
+        <p>
+          The codebase strictly follows Android recommended architecture patterns: <strong>Clean Architecture</strong>, <strong>Model-View-ViewModel (MVVM)</strong>, and <strong>Unidirectional Data Flow (UDF)</strong>. The core deterministic puzzle engine is decoupled from Android platform dependencies, enabling instant headless unit testing without emulators.
+        </p>
+
+        <div class="code-block">
+app/src/main/java/com/strangeinfinity/infinitytiles/
+├── MainActivity.kt               # Single Activity, edge-to-edge window, hardware key listener
+├── domain/
+│   ├── model/
+│   │   ├── Tile.kt               # Unique entity (id, value: Long, row, col, isMerged, isNew)
+│   │   ├── BoardSize.kt          # Board dimensions enum (THREE=3x3, FOUR=4x4, FIVE=5x5)
+│   │   ├── GameMode.kt           # Game modes (CLASSIC, DAILY_CHALLENGE, TIME_RUSH)
+│   │   ├── MoveDirection.kt      # UP, DOWN, LEFT, RIGHT
+│   │   ├── GameState.kt          # Immutable board snapshot, undo state, score, status
+│   │   └── GameStats.kt          # Aggregated career metrics (games won, win rate, best tile)
+│   └── engine/
+│       └── GameEngine.kt         # Pure Kotlin deterministic rules, single-merge guarantee
+├── data/
+│   └── GamePreferencesRepository.kt # DataStore persistence for games, settings, and stats
+├── sound/
+│   └── SoundManager.kt           # Ultra-low-latency tone synthesis and haptics
+└── ui/
+    ├── GameViewModel.kt          # State holder managing UI StateFlow and user intents
+    ├── theme/
+    │   ├── Color.kt              # Infinite color progression and dark/light palettes
+    │   ├── Theme.kt              # Material 3 dynamic and custom theming
+    │   └── Type.kt               # Typography system
+    ├── components/
+    │   ├── GameBoard.kt          # Gesture handling and animated tile coordinates
+    │   ├── TileView.kt           # Dynamic font sizing and scale pop animations
+    │   ├── ScoreCard.kt          # Metric cards with animated transitions
+    │   ├── ControlBar.kt         # Action bar (Undo, Restart, Stats, Settings)
+    │   ├── GameOverDialog.kt     # End-of-game overlay with Try Again and Share
+    │   └── VictoryDialog.kt      # 2048 milestone overlay with Keep Going option
+    └── screens/
+        ├── GameScreen.kt         # Root composable screen
+        ├── SettingsDialog.kt     # Theme, audio, board size, and game mode preferences
+        ├── AboutDialog.kt        # Brand attribution and technical specifications
+        └── StatisticsDialog.kt   # Player lifetime metrics modal
+        </div>
+      </section>
+
+      <!-- 3. Mathematical Game Engine -->
+      <section id="engine" class="docs-section">
+        <h2><i class="fa-solid fa-calculator" style="color:#f59e0b"></i> 3. Mathematical Game Engine Rules</h2>
+        <p>
+          The <code>GameEngine</code> enforces classic mathematical 2048 rules with deterministic invariants:
+        </p>
+
+        <h3>Single-Merge Guarantee</h3>
+        <p>
+          During any single directional swipe, a newly merged tile cannot merge again in the same move.
+        </p>
+        <div class="code-block">
+Example 1: Row [2, 2, 2, 2] moved LEFT -> [4, 4, 0, 0]  (Score +8)
+Example 2: Row [4, 4, 8, 0] moved LEFT -> [8, 8, 0, 0]  (Score +8; the resulting 8s do not chain)
+Example 3: Row [2, 0, 2, 4] moved LEFT -> [4, 4, 0, 0]  (Score +4)
+        </div>
+
+        <h3>Tile Spawn Probability</h3>
+        <p>
+          A new tile is spawned only if the move altered the board configuration. The new tile is placed randomly in an unoccupied cell with exact probability distribution:
+        </p>
+        <ul>
+          <li><strong>Tile Value 2:</strong> 90% probability (<code>0.90</code>)</li>
+          <li><strong>Tile Value 4:</strong> 10% probability (<code>0.10</code>)</li>
+        </ul>
+
+        <h3>64-Bit Infinite Integer Engine</h3>
+        <p>
+          Unlike legacy 2048 implementations that store tile values in 32-bit signed integers (capping or overflowing around 2 billion), 2048-Infinity stores values as Kotlin 64-bit <code>Long</code> integers. This allows unbounded cosmic growth:
+        </p>
+        <div class="code-block">
+2 -> 4 -> 8 -> 16 -> 32 -> 64 -> 128 -> 256 -> 512 -> 1024 -> 2048
+-> 4096 -> 8192 -> 16384 -> 32768 -> 65536 -> 131072 -> 262144 -> 524288 -> ...
+        </div>
+
+        <h3>Victory &amp; Defeat Criteria</h3>
+        <ul>
+          <li><strong>Victory:</strong> Unlocked when any cell achieves a value of <code>2048</code>. Players can select <em>Keep Going</em> to continue into infinite puzzle depth.</li>
+          <li><strong>Game Over:</strong> Triggered if all grid cells are occupied and no two horizontally or vertically adjacent cells contain equal values.</li>
+        </ul>
+      </section>
+
+      <!-- 4. UI & Animation -->
+      <section id="ui-animation" class="docs-section">
+        <h2><i class="fa-solid fa-wand-magic-sparkles" style="color:#10b981"></i> 4. Jetpack Compose UI &amp; Animation System</h2>
+        <p>
+          Traditional Android Views suffer from layout hierarchy recalculations during rapid gesture movements. 2048-Infinity achieves native 60 FPS and 120 FPS high-refresh rate animations using Jetpack Compose's direct lambda-offset modifier:
+        </p>
+        <div class="code-block">
+// Direct lambda offset bypasses full layout recomposition
+Modifier.offset {
+    IntOffset(
+        x = (col * (cellSize + gapPx)).roundToInt(),
+        y = (row * (cellSize + gapPx)).roundToInt()
+    )
+}
+        </div>
+
+        <h3>Dynamic Tile Typography</h3>
+        <p>
+          As numbers grow from <code>2</code> to <code>16384</code> and beyond, tile text automatically scales dynamically to ensure numbers fit crisply within tile boundaries without ellipsis or text truncation:
+        </p>
+        <ul>
+          <li>1–2 digits (2, 64): <code>32.sp</code> font size, Bold weight</li>
+          <li>3 digits (128, 512): <code>26.sp</code> font size</li>
+          <li>4 digits (1024, 8192): <code>20.sp</code> font size</li>
+          <li>5+ digits (16384, 65536): <code>15.sp</code> font size</li>
+        </ul>
+      </section>
+
+      <!-- 5. Audio & Haptics -->
+      <section id="sound-haptics" class="docs-section">
+        <h2><i class="fa-solid fa-wave-square" style="color:#ec4899"></i> 5. Zero-Latency Audio Synthesis &amp; Haptics</h2>
+        <p>
+          Standard Android sound playback via <code>MediaPlayer</code> incurs noticeable 50ms–150ms decoding latency. 2048-Infinity solves this using hardware synthesized tones:
+        </p>
+        <ul>
+          <li><strong>Move Tone:</strong> High-frequency short chirp (<code>ToneGenerator.TONE_PROP_BEEP</code>)</li>
+          <li><strong>Merge Chime:</strong> Pleasant dual-frequency resonance (<code>ToneGenerator.TONE_PROP_ACK</code>)</li>
+          <li><strong>Victory Fanfare:</strong> Celebratory multi-note prompt tone</li>
+          <li><strong>Defeat Tone:</strong> Low-frequency minor resolution tone</li>
+        </ul>
+        <p>
+          Tactile vibrations are powered by Android's modern <code>VibratorManager</code> (API 31+) with fallback to classic <code>Vibrator</code>. Merge events trigger <code>VibrationEffect.createOneShot(25, 120)</code> for crisp haptic feedback.
+        </p>
+      </section>
+
+      <!-- 6. Persistence -->
+      <section id="persistence" class="docs-section">
+        <h2><i class="fa-solid fa-database" style="color:#06b6d4"></i> 6. Jetpack DataStore Persistence</h2>
+        <p>
+          Game state is managed reactively via <code>GamePreferencesRepository</code> backed by Jetpack DataStore. Unlike legacy SharedPreferences, DataStore performs all disk I/O asynchronously off the main thread:
+        </p>
+        <div class="code-block">
+Stored Preferences Keys:
+• KEY_BOARD_TILES:    JSON / CSV serialized list of active tiles
+• KEY_CURRENT_SCORE:  Current game score (Long)
+• KEY_BEST_SCORE:     All-time high score for current grid size (Long)
+• KEY_BOARD_SIZE:     Active grid dimension (3x3, 4x4, 5x5)
+• KEY_GAME_MODE:      Active mode (Classic, Daily, Time Rush)
+• KEY_THEME_MODE:     Dark, Light, or Follow System
+• KEY_SOUND_ENABLED:  Audio synthesis toggle flag
+• KEY_HAPTIC_ENABLED: Tactile vibration toggle flag
+• KEY_STATS_*:        Games played, won, best tile, move counts
+        </div>
+      </section>
+
+      <!-- 7. Installation -->
+      <section id="installation" class="docs-section">
+        <h2><i class="fa-solid fa-circle-check" style="color:#3ddc84"></i> 7. APK Installation &amp; Verification</h2>
+        <p>
+          Download the signed release APK directly to your device:
+        </p>
+        <div class="code-block">
+URL: https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk
+File: 2048-Infinity-v1.0.0-release.apk
+Size: 11,284,557 bytes (~11 MB)
+        </div>
+
+        <h3>Verify APK Signature</h3>
+        <p>
+          You can inspect and verify the APK signature using the official Android SDK <code>apksigner</code> tool:
+        </p>
+        <div class="code-block">
+apksigner verify --verbose 2048-Infinity-v1.0.0-release.apk
+        </div>
+        <p>
+          Output confirms valid v1, v2, v3, and v4 signing schemas matching the StrangeInfinity release certificate.
+        </p>
+      </section>
+
+      <!-- 8. Building from Source -->
+      <section id="building" class="docs-section">
+        <h2><i class="fa-solid fa-hammer" style="color:#f59e0b"></i> 8. Building from Source</h2>
+        <p>
+          To build 2048-Infinity from source code:
+        </p>
+        <div class="code-block">
+# 1. Clone repository
+git clone https://github.com/dev-hints/2048-Infinity.git
+cd 2048-Infinity
+
+# 2. Run automated headless unit tests
+./gradlew testDebugUnitTest
+
+# 3. Assemble Debug APK
+./gradlew assembleDebug
+
+# 4. Assemble Signed Release APK
+./gradlew assembleRelease
+        </div>
+        <p>
+          The output APK is generated at <code>app/build/outputs/apk/release/app-release.apk</code>.
+        </p>
+      </section>
+
+      <!-- 9. Privacy & Permissions -->
+      <section id="privacy" class="docs-section">
+        <h2><i class="fa-solid fa-shield-halved" style="color:#10b981"></i> 9. Permissions &amp; Privacy Statement</h2>
+        <p>
+          2048-Infinity is built on complete transparency and user respect:
+        </p>
+        <ul>
+          <li><strong>android.permission.VIBRATE:</strong> Used solely to generate tactile haptic feedback during moves and merges. Can be disabled at any time in Settings.</li>
+          <li><strong>Zero Network Declarations:</strong> The app does not declare <code>android.permission.INTERNET</code> or <code>android.permission.ACCESS_NETWORK_STATE</code>. The Android OS prevents the app from making network connections at the kernel sandbox level.</li>
+          <li><strong>Zero Tracking SDKs:</strong> No Google Play Services, Firebase, ad frameworks, or telemetry collectors are linked into the binary.</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo" aria-label="StrangeInfinity home">
+          <img src="../assets/images/logo-icon.png" alt="StrangeInfinity" width="36" height="36" loading="lazy" />
+          <span class="footer-logo-name">StrangeInfinity</span>
+        </a>
+        <p class="footer-tagline">2048-Infinity — Merge. Think. Go Beyond. Native Android puzzle game.</p>
+        <div class="footer-social">
+          <a href="https://github.com/strangeinfinity/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://x.com/strang3infinity" target="_blank" rel="noopener noreferrer" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://in.linkedin.com/in/ayush-kumar-maurya/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Documentation</p>
+        <nav class="footer-links" aria-label="Documentation links">
+          <a href="#overview">Overview &amp; Specifications</a>
+          <a href="#architecture">Clean Architecture</a>
+          <a href="#engine">Mathematical Rules</a>
+          <a href="#persistence">DataStore Persistence</a>
+          <a href="#building">Building from Source</a>
+          <a href="index.html#download">Download APK</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">StrangeInfinity Suite</p>
+        <nav class="footer-links" aria-label="Projects navigation">
+          <a href="../store/" style="color:var(--color-primary-light);font-weight:700;"><i class="fa-solid fa-bag-shopping"></i> App Store</a>
+          <a href="../Dedroid/">Dedroid Debian for Android</a>
+          <a href="../MarkView/">MarkView Desktop Reader</a>
+          <a href="../MyDrive/">MyDrive Cloud Storage</a>
+          <a href="../2048-Nexus/">2048 Nexus (Desktop)</a>
+          <a href="../Infinity-Browser/">Infinity Browser</a>
+          <a href="../AirPointer/">AirPointer Virtual Mouse</a>
+          <a href="../index.html#projects">All Projects</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 <a href="https://www.strangeinfinity.store/">StrangeInfinity</a>. Open-source &amp; built with <i class="fa-solid fa-heart" style="color:#ef4444"></i> and ∞ curiosity.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Back to Top Button -->
+<button id="back-to-top" aria-label="Scroll back to top" title="Back to top">↑</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/particles.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
+    ParticleEngine.init();
+
+    // Sticky Navbar & BTT
+    const navbar = document.getElementById('navbar');
+    const btt = document.getElementById('back-to-top');
+
+    // ScrollSpy for TOC links & Navbar
+    const sections = document.querySelectorAll('.docs-section');
+    const navLinks = document.querySelectorAll('.docs-nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
+      if (btt) btt.classList.toggle('visible', scrollY > 500);
+
+      let current = '';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 140;
+        if (scrollY >= top) {
+          current = sec.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }, { passive: true });
+
+    if (btt) {
+      btt.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Mobile Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+  });
+</script>
+</body>
+</html>

@@ -262,7 +262,10 @@
       <p class="section-subtitle">Major StrangeInfinity products crafted with precision, performance, and passion.</p>
     </div>
     <div id="products-grid" class="products-grid" role="list" aria-label="Featured product cards"></div>
-    <div class="reveal" style="text-align:center;margin-top:var(--space-8);">
+    <div id="products-more-wrap" class="reveal revealed" style="text-align:center;margin-top:var(--space-8);display:flex;align-items:center;justify-content:center;gap:var(--space-3);flex-wrap:wrap;">
+      <button id="products-toggle-btn" class="btn btn-outline" type="button" aria-expanded="false" aria-controls="products-grid">
+        <i class="fa-solid fa-chevron-down" id="products-toggle-icon"></i> <span id="products-toggle-text">View More Flagship Products</span>
+      </button>
       <a href="store/" class="btn btn-primary">
         <i class="fa-solid fa-bag-shopping"></i> <span>Explore All in App Store</span>
       </a>
@@ -282,7 +285,7 @@
           Looking for Direct Downloads &amp; Packages?
         </h3>
         <p style="font-size:var(--text-sm);color:var(--text-secondary);margin:0;line-height:1.6;max-width:680px;">
-          Browse our Play Store-style marketplace for Android APKs (Dedroid), Linux desktop packages (MarkView .AppImage / .deb / .rpm), Windows installers (2048 Nexus .exe), and self-hosted cloud storage (MyDrive). Free, zero telemetry, and 100% open source.
+          Browse our Play Store-style marketplace for Android APKs (Dedroid, 2048-Infinity), Linux desktop packages (MarkView .AppImage / .deb / .rpm), Windows installers (2048 Nexus .exe), and self-hosted cloud storage (MyDrive). Free, zero telemetry, and 100% open source.
         </p>
       </div>
       <div style="position:relative;z-index:2;">
@@ -361,6 +364,7 @@
         <p class="footer-col-title">Projects</p>
         <nav class="footer-links" aria-label="Key projects">
           <a href="Dedroid/">Dedroid Debian for Android</a>
+          <a href="2048-Infinity/">2048-Infinity Android Game</a>
           <a href="MarkView/">MarkView Desktop Reader</a>
           <a href="MyDrive/">MyDrive Cloud Storage</a>
           <a href="AirPointer/">AirPointer Virtual Mouse</a>

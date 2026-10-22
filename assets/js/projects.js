@@ -62,6 +62,30 @@ const SI_CONFIG = {
       tags: ['Kotlin', 'Android', 'Debian', 'Linux', 'PRoot'],
     },
     {
+      id:       '2048-infinity',
+      name:     '2048-Infinity',
+      icon:     '<i class="fa-solid fa-gamepad" style="color:#6366f1"></i>',
+      featured: true,
+      status:   'active',
+      color:    'primary',
+      desc:     'Original native Android puzzle game engineered in Kotlin 2.0 & Jetpack Compose Material 3 with 64-bit infinite progression beyond 2048, 60/120Hz animations, synthesized audio, and zero tracking.',
+      features: [
+        'Built with native Kotlin 2.0 & Jetpack Compose Material 3',
+        '64-bit integer engine with progression beyond 2048 into infinity',
+        'Multiple grid dimensions: 3x3 (Blitz), 4x4 (Classic), 5x5 (Strategy)',
+        'Single-move undo and Jetpack DataStore local persistence',
+        'Low-latency synthesized audio tones & rich tactile haptic feedback',
+        '100% offline with zero internet permissions, ads, or trackers',
+      ],
+      links: {
+        github:   'https://github.com/dev-hints/2048-Infinity',
+        download: 'https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk',
+        demo:     'https://www.strangeinfinity.store/2048-Infinity/',
+        docs:     'https://www.strangeinfinity.store/2048-Infinity/docs.html',
+      },
+      tags: ['Kotlin', 'Android', 'Compose', 'Jetpack', 'Game'],
+    },
+    {
       id:       'markview',
       name:     'MarkView',
       icon:     '<i class="fa-solid fa-file-code" style="color:#0ea5e9"></i>',
@@ -111,7 +135,6 @@ const SI_CONFIG = {
     },
     {
       id:       'infinity-writer',
-      name:     'Infinity Writer',
       name:     'Infinity Writer',
       icon:     '<i class="fa-solid fa-feather-pointed" style="color:var(--color-primary-light)"></i>',
       featured: true,
@@ -335,6 +358,17 @@ const SI_CONFIG = {
       demo:     'https://www.strangeinfinity.store/Dedroid/',
     },
     {
+      id:       '2048-infinity',
+      title:    '2048-Infinity Android Game',
+      icon:     '<i class="fa-solid fa-gamepad" style="color:#6366f1"></i>',
+      status:   'active',
+      desc:     'Original native Android puzzle game built in Kotlin 2 & Jetpack Compose M3 with 64-bit infinite progression beyond 2048 and zero permissions.',
+      tags:     ['Kotlin', 'Android', 'Compose', 'Game'],
+      github:   'https://github.com/dev-hints/2048-Infinity',
+      download: 'https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk',
+      demo:     'https://www.strangeinfinity.store/2048-Infinity/',
+    },
+    {
       id:       'markview',
       title:    'MarkView Desktop Reader',
       icon:     '<i class="fa-solid fa-file-code" style="color:#0ea5e9"></i>',
@@ -471,6 +505,7 @@ const SI_CONFIG = {
   /* ── GitHub Repositories ── */
   repos: [
     { name: 'Dedroid',         desc: 'Debian 13 (Trixie) rootless terminal CLI environment for Android',           lang: 'Kotlin / Shell', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 18', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 4' },
+    { name: '2048-Infinity',   desc: 'Native Android puzzle game in Kotlin 2 & Jetpack Compose with infinite 64-bit engine', lang: 'Kotlin', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 12', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 2' },
     { name: 'MarkView',        desc: 'Modern cross-platform desktop Markdown application in Tauri 2 & React 19',  lang: 'Rust / TypeScript', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 14', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 2' },
     { name: 'mydrive',         desc: 'Self-hosted private cloud storage & media streaming server with FastAPI',   lang: 'Python',     stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 22', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 5' },
     { name: 'Infinity-Writer', desc: 'Generates clean, semantic HTML with native out-of-the-box dark mode support', lang: 'JavaScript', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 12', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 3' },
@@ -628,19 +663,24 @@ const ProjectRenderer = (() => {
     });
   }
 
+  let productsExpanded = false;
+  const PRODUCTS_INITIAL_COUNT = 4;
+
   /** Render featured products (Minimal, Clean & Professional) */
   function renderProducts() {
     const container = document.getElementById('products-grid');
     if (!container) return;
 
-    const flagshipProducts = SI_CONFIG.products.filter(p => p.featured);
+    const visibleProducts = productsExpanded
+      ? SI_CONFIG.products
+      : SI_CONFIG.products.slice(0, PRODUCTS_INITIAL_COUNT);
 
-    container.innerHTML = flagshipProducts.map((p, i) => {
+    container.innerHTML = visibleProducts.map((p, i) => {
       const primaryBadge = p.tags && p.tags[0] ? p.tags[0] : 'Flagship';
       const visibleTags = (p.tags || []).slice(0, 3);
 
       return `
-      <article class="product-card featured reveal revealed"
+      <article class="product-card ${p.featured ? 'featured' : ''} reveal revealed"
                role="article" aria-label="${p.name}">
         <div class="product-card-top">
           <div class="product-icon-wrap" aria-hidden="true">${p.icon}</div>
@@ -671,6 +711,50 @@ const ProjectRenderer = (() => {
       </article>
       `;
     }).join('');
+
+    updateProductsToggleButton();
+
+    // Ensure immediate visibility on all mobile devices & desktops
+    requestAnimationFrame(() => {
+      container.querySelectorAll('.product-card').forEach(el => el.classList.add('revealed'));
+      const wrap = document.getElementById('products-more-wrap');
+      if (wrap) wrap.classList.add('revealed');
+    });
+  }
+
+  function updateProductsToggleButton() {
+    const toggleBtn = document.getElementById('products-toggle-btn');
+    if (!toggleBtn) return;
+
+    const remaining = SI_CONFIG.products.length - PRODUCTS_INITIAL_COUNT;
+    if (remaining <= 0) {
+      toggleBtn.style.display = 'none';
+      return;
+    }
+    toggleBtn.style.display = 'inline-flex';
+
+    if (productsExpanded) {
+      toggleBtn.innerHTML = '<i class="fa-solid fa-chevron-up"></i> <span>Show Fewer Products</span>';
+      toggleBtn.setAttribute('aria-expanded', 'true');
+    } else {
+      toggleBtn.innerHTML = `<i class="fa-solid fa-chevron-down"></i> <span>View All Flagship Products (${remaining} more)</span>`;
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function setupProductsToggle() {
+    const toggleBtn = document.getElementById('products-toggle-btn');
+    if (!toggleBtn) return;
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      productsExpanded = !productsExpanded;
+      renderProducts();
+      if (!productsExpanded) {
+        const section = document.getElementById('products');
+        if (section) section.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   }
 
   /** Render tech stack */
@@ -811,6 +895,7 @@ const ProjectRenderer = (() => {
   function init() {
     renderProjects();
     renderProducts();
+    setupProductsToggle();
     renderTech();
     renderRepos();
     renderTimeline();

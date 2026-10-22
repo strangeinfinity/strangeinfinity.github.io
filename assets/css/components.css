@@ -382,6 +382,43 @@
   font-size: var(--text-xs);
 }
 
+/* ── Flagship Products Mobile Responsive Toggle ── */
+#products-more-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-8);
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+#products-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  #products-more-wrap {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    padding: 0 var(--space-3) !important;
+    gap: var(--space-3) !important;
+  }
+  #products-more-wrap .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: var(--space-3) var(--space-4) !important;
+    font-size: var(--text-sm) !important;
+    box-sizing: border-box !important;
+  }
+}
+
 /* ── Technology Card ── */
 .tech-card {
   background: var(--bg-card);

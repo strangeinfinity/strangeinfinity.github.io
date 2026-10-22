@@ -66,6 +66,66 @@ const APPS_DATA = [
     featured: true
   },
   {
+    id: '2048-infinity',
+    name: '2048 Infinity',
+    tagline: 'Native Android 2048 Puzzle Game with Jetpack Compose',
+    category: 'games',
+    categoryName: 'Games & Arcade',
+    platforms: ['android'],
+    platformBadge: 'Android 8.0+',
+    badge: 'Android Game',
+    size: '11 MB',
+    sizeBytes: 11284557,
+    version: 'v1.0.0',
+    icon: '../2048-Infinity/icons/2048-infinity.png',
+    summary: 'An original native Android puzzle game built from the ground up with Kotlin and Jetpack Compose. Merge tiles, unlock infinite number progression beyond 2048, enjoy fluid 60/120Hz animations, synthesized audio, haptic feedback, multiple grid sizes (3x3, 4x4, 5x5), single-move undo, and 100% offline privacy.',
+    highlights: [
+      'Engineered in native Kotlin 2.0 & Jetpack Compose Material 3',
+      '64-bit integer engine with infinite progression beyond 2048 (4096, 8192, 16384...)',
+      'Multiple grid dimensions: 3x3 (Fast Blitz), 4x4 (Classic Standard), and 5x5 (Deep Strategy)',
+      'Single-move undo to recover from unintended swipes',
+      'Low-latency synthesized audio chimes and tailored tactile haptic vibrations',
+      '100% offline with zero advertisements, zero tracking, and zero network permissions'
+    ],
+    screenshots: [
+      { src: '../2048-Infinity/screenshots/home-screen.png', title: 'Active Gameplay (4x4 Standard)' },
+      { src: '../2048-Infinity/screenshots/gameplay-merging.png', title: 'Merging High-Value Tiles' },
+      { src: '../2048-Infinity/screenshots/dark-mode.png', title: 'Cosmic Dark Mode' },
+      { src: '../2048-Infinity/screenshots/home-screen-light.png', title: 'Crisp Light Mode' },
+      { src: '../2048-Infinity/screenshots/settings.png', title: 'Settings & Mode Preferences' },
+      { src: '../2048-Infinity/screenshots/victory.png', title: '2048 Victory & Infinite Mode' },
+      { src: '../2048-Infinity/screenshots/game-over.png', title: 'Game Over & Sharesheet' }
+    ],
+    primaryDownload: {
+      label: 'Download APK',
+      url: 'https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk',
+      format: 'APK',
+      size: '11 MB'
+    },
+    packages: [
+      {
+        name: 'Official Release APK',
+        url: 'https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk',
+        arch: 'Android 8.0+ (Universal ARM64 / ARMv7 / x86_64)',
+        size: '11 MB',
+        recommended: true
+      },
+      {
+        name: 'Source Code (.zip)',
+        url: 'https://github.com/dev-hints/2048-Infinity/archive/refs/heads/main.zip',
+        arch: 'Kotlin Source Code',
+        size: '680 KB',
+        recommended: false
+      }
+    ],
+    keywords: ['2048', 'infinity', 'android', 'apk', 'kotlin', 'compose', 'jetpack', 'puzzle', 'game', 'tiles', 'numbers', 'merge', 'offline', 'arcade'],
+    portalUrl: '../2048-Infinity/',
+    docsUrl: '../2048-Infinity/docs.html',
+    githubUrl: 'https://github.com/dev-hints/2048-Infinity',
+    license: 'Open Source',
+    featured: true
+  },
+  {
     id: 'markview',
     name: 'MarkView',
     tagline: 'Modern Markdown Document Reader',
@@ -836,7 +896,10 @@ const AppStore = (() => {
 
     // 2. Category Filter
     if (activeCategory !== 'all') {
-      list = list.filter(app => app.category === activeCategory);
+      list = list.filter(app => {
+        if (activeCategory === 'android') return app.category === 'android' || app.platforms.includes('android');
+        return app.category === activeCategory;
+      });
     }
 
     // 3. Search Query Filter (Precision multi-token matching)

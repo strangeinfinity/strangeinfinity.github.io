@@ -140,13 +140,13 @@ The StrangeInfinity portal highlights several flagship software products and ope
       </p>
     </td>
     <td width="50%" valign="top">
-      <h3>MarkView Desktop Reader</h3>
-      <p>High-performance desktop Markdown application in Tauri 2, Rust & React 19. Features Shiki syntax highlighting, KaTeX math, Mermaid diagrams, and real-time filesystem watcher.</p>
+      <h3>2048-Infinity (Native Android Game)</h3>
+      <p>Original native Android puzzle game built in Kotlin 2.0 and Jetpack Compose Material 3. Features 64-bit integer engine with infinite progression beyond 2048, 60/120Hz animations, multi-grid sizes, synthesized audio & haptics, and zero permissions.</p>
       <p>
-        <a href="https://www.strangeinfinity.store/MarkView/"><strong>Portal »</strong></a> • 
-        <a href="https://www.strangeinfinity.store/MarkView/docs.html"><strong>Docs »</strong></a> • 
-        <a href="https://github.com/dev-hints/MarkView/releases"><strong>Releases »</strong></a> • 
-        <a href="https://github.com/dev-hints/MarkView">GitHub</a>
+        <a href="https://www.strangeinfinity.store/2048-Infinity/"><strong>Portal »</strong></a> • 
+        <a href="https://www.strangeinfinity.store/2048-Infinity/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/2048-Infinity/releases/download/First/2048-Infinity-v1.0.0-release.apk"><strong>Download APK »</strong></a> • 
+        <a href="https://github.com/dev-hints/2048-Infinity">GitHub</a>
       </p>
     </td>
   </tr>
@@ -161,6 +161,18 @@ The StrangeInfinity portal highlights several flagship software products and ope
         <a href="https://github.com/dev-hints/mydrive">GitHub</a>
       </p>
     </td>
+    <td width="50%" valign="top">
+      <h3>MarkView Desktop Reader</h3>
+      <p>High-performance desktop Markdown application in Tauri 2, Rust & React 19. Features Shiki syntax highlighting, KaTeX math, Mermaid diagrams, and real-time filesystem watcher.</p>
+      <p>
+        <a href="https://www.strangeinfinity.store/MarkView/"><strong>Portal »</strong></a> • 
+        <a href="https://www.strangeinfinity.store/MarkView/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/MarkView/releases"><strong>Releases »</strong></a> • 
+        <a href="https://github.com/dev-hints/MarkView">GitHub</a>
+      </p>
+    </td>
+  </tr>
+  <tr>
     <td width="50%" valign="top">
       <h3>ToDo Task Manager</h3>
       <p>Distraction-free personal task management and Pomodoro workstation built with cosmic glassmorphism and 100% local persistence.</p>

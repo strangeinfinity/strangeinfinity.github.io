@@ -359,7 +359,35 @@
     </image:image>
   </url>
 
-  <!-- 14. StrangeInfinity App Store -->
+  <!-- 14. 2048-Infinity -->
+  <url>
+    <loc>https://www.strangeinfinity.store/2048-Infinity/</loc>
+    <lastmod>2026-10-22T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.strangeinfinity.store/2048-Infinity/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.strangeinfinity.store/2048-Infinity/" />
+    <image:image>
+      <image:loc>https://www.strangeinfinity.store/2048-Infinity/icons/2048-infinity.png</image:loc>
+      <image:title>2048-Infinity — Native Android Puzzle Game | Jetpack Compose</image:title>
+      <image:caption>Native Android sliding-tile puzzle game in Kotlin and Jetpack Compose Material 3 with 64-bit infinite engine, 3x3/4x4/5x5 grids, and offline privacy.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.strangeinfinity.store/2048-Infinity/docs.html</loc>
+    <lastmod>2026-10-22T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.strangeinfinity.store/2048-Infinity/docs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.strangeinfinity.store/2048-Infinity/docs.html" />
+    <image:image>
+      <image:loc>https://www.strangeinfinity.store/2048-Infinity/icons/2048-infinity.png</image:loc>
+      <image:title>2048-Infinity Technical Documentation &amp; Architecture</image:title>
+      <image:caption>Complete manual covering Clean Architecture, MVVM, deterministic engine rules, synthesized audio, and Gradle build instructions.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 15. StrangeInfinity App Store -->
   <url>
     <loc>https://www.strangeinfinity.store/store/</loc>
     <lastmod>2026-10-22T12:00:00+00:00</lastmod>
@@ -370,7 +398,7 @@
     <image:image>
       <image:loc>https://www.strangeinfinity.store/assets/images/logo.png</image:loc>
       <image:title>StrangeInfinity App Store — Free &amp; Open-Source Software Marketplace</image:title>
-      <image:caption>Download Dedroid Debian Android APK, MarkView Linux AppImage/deb/rpm, MyDrive private cloud, 2048 Nexus game, and developer tools.</image:caption>
+      <image:caption>Download 2048-Infinity Android game, Dedroid Debian Android APK, MarkView Linux AppImage/deb/rpm, MyDrive private cloud, 2048 Nexus game, and developer tools.</image:caption>
     </image:image>
   </url>
 
