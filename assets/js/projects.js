@@ -29,7 +29,7 @@ const SI_CONFIG = {
 
   /* ── Stats ── */
   stats: [
-    { value: 27,  suffix: '+', label: 'Repositories'   },
+    { value: 28,  suffix: '+', label: 'Repositories'   },
     { value: 45,  suffix: '+', label: 'GitHub Stars'   },
     { value: 25,  suffix: 'K+', label: 'Lines of Code' },
     { value: 3,   suffix: '+', label: 'Years Building' },
@@ -37,6 +37,30 @@ const SI_CONFIG = {
 
   /* ── Featured Products ── */
   products: [
+    {
+      id:       'notes',
+      name:     'Notes',
+      icon:     '<i class="fa-solid fa-note-sticky" style="color:#6366f1"></i>',
+      featured: true,
+      status:   'active',
+      color:    'primary',
+      desc:     'Offline-first Android note-taking application engineered with Kotlin 2.0, Jetpack Compose Material 3, Room SQLite, vector handwriting canvas, and authenticated client-side AES-256-GCM encrypted backups.',
+      features: [
+        'Built with native Kotlin 2.0, Jetpack Compose M3 & Android Room',
+        '100% offline with zero internet permissions, ads, or tracking',
+        'Client-side AES-256-GCM authenticated encrypted backups (PBKDF2)',
+        'Rich text formatting, markdown preview & interactive checklists',
+        'Smooth vector sketch & handwriting canvas with Bézier curves',
+        'Color-coded folders, tags, pinning, search & trash recycle bin',
+      ],
+      links: {
+        github:   'https://github.com/dev-hints/Notes',
+        download: 'https://github.com/dev-hints/Notes/releases/download/v1.0.0/Notes-release.apk',
+        demo:     'https://www.strangeinfinity.store/Notes/',
+        docs:     'https://www.strangeinfinity.store/Notes/docs.html',
+      },
+      tags: ['Kotlin', 'Android', 'Compose', 'Jetpack', 'Room'],
+    },
     {
       id:       'dedroid',
       name:     'Dedroid',
@@ -347,6 +371,17 @@ const SI_CONFIG = {
   /* ── All Projects ── */
   projects: [
     {
+      id:       'notes',
+      title:    'Notes Android App',
+      icon:     '<i class="fa-solid fa-note-sticky" style="color:#6366f1"></i>',
+      status:   'active',
+      desc:     'Private offline Android note-taking app in Kotlin & Jetpack Compose M3 with Room SQLite, vector handwriting canvas, and AES-256-GCM encryption.',
+      tags:     ['Kotlin', 'Android', 'Compose', 'Productivity'],
+      github:   'https://github.com/dev-hints/Notes',
+      download: 'https://github.com/dev-hints/Notes/releases/download/v1.0.0/Notes-release.apk',
+      demo:     'https://www.strangeinfinity.store/Notes/',
+    },
+    {
       id:       'dedroid',
       title:    'Dedroid Terminal on Android',
       icon:     '<i class="fa-brands fa-debian" style="color:#d70a53"></i>',
@@ -504,6 +539,7 @@ const SI_CONFIG = {
 
   /* ── GitHub Repositories ── */
   repos: [
+    { name: 'Notes',           desc: 'Private offline-first Android note-taking app with Compose M3, Room, and AES-256-GCM backup', lang: 'Kotlin', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 16', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 3' },
     { name: 'Dedroid',         desc: 'Debian 13 (Trixie) rootless terminal CLI environment for Android',           lang: 'Kotlin / Shell', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 18', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 4' },
     { name: '2048-Infinity',   desc: 'Native Android puzzle game in Kotlin 2 & Jetpack Compose with infinite 64-bit engine', lang: 'Kotlin', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 12', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 2' },
     { name: 'MarkView',        desc: 'Modern cross-platform desktop Markdown application in Tauri 2 & React 19',  lang: 'Rust / TypeScript', stars: '<i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.85em;"></i> 14', forks: '<i class="fa-solid fa-code-fork" style="color:var(--text-muted);font-size:0.85em;"></i> 2' },

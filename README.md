@@ -130,6 +130,16 @@ The StrangeInfinity portal highlights several flagship software products and ope
   </tr>
   <tr>
     <td width="50%" valign="top">
+      <h3>Notes (Offline Android App)</h3>
+      <p>Offline-first Android note-taking application engineered with Kotlin 2.0, Jetpack Compose Material 3, Room SQLite, vector handwriting canvas, and client-side AES-256-GCM encrypted backups.</p>
+      <p>
+        <a href="https://www.strangeinfinity.store/Notes/"><strong>Portal »</strong></a> • 
+        <a href="https://www.strangeinfinity.store/Notes/docs.html"><strong>Docs »</strong></a> • 
+        <a href="https://github.com/dev-hints/Notes/releases/download/v1.0.0/Notes-release.apk"><strong>Download APK »</strong></a> • 
+        <a href="https://github.com/dev-hints/Notes">GitHub</a>
+      </p>
+    </td>
+    <td width="50%" valign="top">
       <h3>Dedroid (Debian on Android)</h3>
       <p>Native Android application built in Kotlin featuring a Debian GNU/Linux 13 (Trixie) rootless terminal workstation powered by PRoot virtualization, passwordless sudo, SD card storage bridge, and developer keyboard toolbar.</p>
       <p>

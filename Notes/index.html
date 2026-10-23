@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCEZHSD62X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RCEZHSD62X');
+  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/notes.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/notes.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/notes_round.png" />
+
+  <!-- Security Headers & Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://img.shields.io https://avatars.githubusercontent.com https://github.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes — Private Offline Android Note-Taking App | StrangeInfinity</title>
+  <meta name="title" content="Notes — Private Offline Android Note-Taking App | StrangeInfinity" />
+  <meta name="description" content="Download Notes APK for Android. A high-performance, 100% offline note-taking app built with Kotlin, Jetpack Compose Material 3, Room SQLite, vector handwriting canvas, and client-side AES-256-GCM encrypted backups." />
+  <meta name="keywords" content="Notes APK, download Notes Android, offline notes app, private notes, Kotlin notes app, Jetpack Compose, encrypted notes, strangeinfinity, dev-hints" />
+  <meta name="author" content="StrangeInfinity" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://www.strangeinfinity.store/Notes/" />
+  <meta name="theme-color" content="#6366f1" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.strangeinfinity.store/Notes/" />
+  <meta property="og:site_name" content="Notes by StrangeInfinity" />
+  <meta property="og:title" content="Notes — Private Offline Android Note-Taking App" />
+  <meta property="og:description" content="100% offline note-taking for Android with zero tracking. Rich text, checklists, vector drawing canvas, folders, tags, and AES-256-GCM encrypted backups." />
+  <meta property="og:image" content="https://www.strangeinfinity.store/Notes/icons/notes.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@strang3infinity" />
+  <meta name="twitter:title" content="Notes — Private Offline Android Note-Taking App" />
+  <meta name="twitter:description" content="100% offline note-taking for Android with zero tracking. Rich text, checklists, vector drawing canvas, folders, tags, and AES-256-GCM encrypted backups." />
+  <meta name="twitter:image" content="https://www.strangeinfinity.store/Notes/icons/notes.png" />
+
+  <!-- JSON-LD SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Notes by StrangeInfinity",
+    "operatingSystem": "Android 8.0 and up",
+    "applicationCategory": "ProductivityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "description": "A complete, production-quality, offline-first Android note-taking application engineered with Kotlin, Jetpack Compose, Material 3, and Android Room. Features rich text, interactive checklists, vector drawing canvas, folders, tags, and client-side AES-256-GCM encrypted backups.",
+    "softwareVersion": "1.0.0",
+    "downloadUrl": "https://github.com/dev-hints/Notes/releases/download/v1.0.0/Notes-release.apk",
+    "fileSize": "12MB",
+    "author": {
+      "@type": "Organization",
+      "name": "StrangeInfinity",
+      "url": "https://www.strangeinfinity.store/"
+    }
+  }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" integrity="sha512-X2hbziex+UPQ+KdI4BWI+39jEDhf2Smc6bfFI/FTIzWnt7mbwZCUU4RWalnMfxtHCpISlexzmd2kvPFJCliiPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Site Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+
+  <!-- Custom Styles for Notes -->
+  <style>
+    .notes-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--bg-card);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: #38bdf8;
+      margin-bottom: var(--space-6);
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.2);
+    }
+    .notes-mockup-frame {
+      background: #090d16;
+      border: 2px solid rgba(99, 102, 241, 0.35);
+      border-radius: 36px;
+      padding: 16px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(99, 102, 241, 0.2);
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .phone-screen-preview {
+      background: #0d121f;
+      border-radius: 24px;
+      padding: 18px 14px;
+      color: #f8fafc;
+      font-family: var(--font-sans);
+    }
+    .preview-search-bar {
+      background: #182234;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+    .preview-filter-chips {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .preview-chip {
+      background: #1e293b;
+      border-radius: 14px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      color: #94a3b8;
+    }
+    .preview-chip.active {
+      background: #4f46e5;
+      color: #ffffff;
+    }
+    .preview-notes-staggered {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .preview-note-card {
+      background: #1e293b;
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .preview-note-card.c-amber { background: #272115; border-color: rgba(245, 158, 11, 0.3); }
+    .preview-note-card.c-emerald { background: #13241d; border-color: rgba(16, 185, 129, 0.3); }
+    .preview-note-card.c-purple { background: #211933; border-color: rgba(168, 85, 247, 0.3); }
+    .preview-note-card.c-cyan { background: #12232e; border-color: rgba(6, 182, 212, 0.3); }
+    .preview-note-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .preview-note-body {
+      font-size: 10px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    /* Screenshots Grid */
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    .screenshot-card {
+      background: var(--bg-card);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      transition: var(--transition-normal);
+      text-align: center;
+    }
+    .screenshot-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 16px 36px rgba(99, 102, 241, 0.18);
+    }
+    .phone-frame {
+      border: 4px solid #1f2937;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      max-width: 200px;
+    }
+    .phone-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .screenshot-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-primary);
+    }
+    .screenshot-caption {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Download Card */
+    .download-card-hero {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(56, 189, 248, 0.04) 100%), var(--bg-card);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10);
+      box-shadow: var(--shadow-card), 0 0 30px rgba(99, 102, 241, 0.12);
+      text-align: center;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    .spec-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-family: var(--font-mono);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ CANVAS BACKGROUND ═══════════════ -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<header role="banner">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo" aria-label="StrangeInfinity Home">
+        <img src="../assets/images/logo-icon.png" alt="StrangeInfinity" width="38" height="38" loading="lazy" />
+        <span>Strange<span style="color:var(--color-secondary)">Infinity</span></span>
+      </a>
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#hero" class="nav-link active">Overview</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#screenshots" class="nav-link">Screenshots</a></li>
+        <li><a href="#security" class="nav-link">Privacy &amp; Encryption</a></li>
+        <li><a href="#download" class="nav-link"><i class="fa-solid fa-download"></i> Download APK</a></li>
+        <li><a href="docs.html" class="nav-link"><i class="fa-solid fa-book"></i> Documentation</a></li>
+      </ul>
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode"><i class="fa-solid fa-moon"></i></button>
+        <a href="https://github.com/dev-hints/Notes" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> Repository</a>
+        <button id="hamburger" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="#hero" class="nav-link"><i class="fa-solid fa-note-sticky"></i> Overview</a>
+    <a href="#features" class="nav-link"><i class="fa-solid fa-star"></i> Features</a>
+    <a href="#screenshots" class="nav-link"><i class="fa-solid fa-images"></i> Screenshots</a>
+    <a href="#security" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Privacy &amp; Encryption</a>
+    <a href="#download" class="nav-link"><i class="fa-solid fa-download"></i> Download APK</a>
+    <a href="docs.html" class="nav-link"><i class="fa-solid fa-book"></i> Documentation</a>
+    <a href="https://github.com/dev-hints/Notes" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════ HERO SECTION ═══════════════ -->
+<section id="hero" aria-label="Hero" style="padding-top:calc(var(--nav-height) + var(--space-8));padding-bottom:var(--space-16);">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="writer-showcase-grid">
+      <div class="reveal-left">
+        <div class="notes-hero-badge">
+          <span style="width:8px;height:8px;background:#6366f1;border-radius:50%;box-shadow:0 0 8px #6366f1"></span>
+          Android 8.0+ · Kotlin 2.0 · Jetpack Compose Material 3 · 100% Offline
+        </div>
+        <h1 class="hero-title" style="font-size:clamp(var(--text-3xl), 5vw, 4.2rem);margin-bottom:var(--space-4);">
+          Notes<br />
+          <span class="gradient-text" style="background:linear-gradient(135deg, #6366f1 0%, #38bdf8 50%, #10b981 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Private &amp; Offline.</span>
+        </h1>
+        <p class="hero-description" style="max-width:560px;margin-bottom:var(--space-8);">
+          A complete, production-quality Android note-taking application engineered with <strong>Kotlin</strong>, <strong>Jetpack Compose</strong>, <strong>Material 3</strong>, and <strong>Android Room</strong>. Rich text, interactive checklists, vector drawing canvas, color-coded folders, and authenticated client-side <strong>AES-256-GCM</strong> encrypted backups with zero cloud tracking.
+        </p>
+        <div class="hero-cta" style="gap:var(--space-4);flex-wrap:wrap;display:flex;">
+          <a href="https://github.com/dev-hints/Notes/releases/download/v1.0.0/Notes-release.apk" download class="btn btn-primary" style="box-shadow:0 0 20px rgba(99,102,241,0.4);">
+            <i class="fa-solid fa-download"></i> Download APK (v1.0.0 · 12 MB)
+          </a>
+          <a href="docs.html" class="btn btn-outline">
+            <span><i class="fa-solid fa-book-open"></i> Technical Docs</span>
+          </a>
+          <a href="https://github.com/dev-hints/Notes" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <i class="fa-brands fa-github"></i> Source Code
+          </a>
+        </div>
+        <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-6);">
+          <span class="spec-tag"><i class="devicon-kotlin-plain colored"></i> Kotlin 2.0</span>
+          <span class="spec-tag"><i class="fa-brands fa-android" style="color:#3ddc84"></i> Jetpack Compose M3</span>
+          <span class="spec-tag"><i class="fa-solid fa-database" style="color:#6366f1"></i> Room SQLite</span>
+          <span class="spec-tag"><i class="fa-solid fa-shield-halved" style="color:#10b981"></i> 0 Internet Perms (100% Offline)</span>
+          <span class="spec-tag"><i class="fa-solid fa-lock" style="color:#f59e0b"></i> AES-256-GCM Encrypted Backup</span>
+        </div>
+      </div>
+
+      <!-- Hero Visual: Simulated Native Board Preview -->
+      <div class="reveal-right">
+        <div class="notes-mockup-frame">
+          <div class="phone-screen-preview">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <div style="font-weight:800;font-size:16px;color:#fff;">Notes</div>
+              <div style="display:flex;gap:10px;color:#94a3b8;font-size:14px;">
+                <i class="fa-solid fa-table-cells-large"></i>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </div>
+            </div>
+
+            <div class="preview-search-bar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Search notes &amp; tags...</span>
+            </div>
+
+            <div class="preview-filter-chips">
+              <span class="preview-chip active">All Notes</span>
+              <span class="preview-chip">#Personal</span>
+              <span class="preview-chip">#Work</span>
+              <span class="preview-chip">#Ideas</span>
+            </div>
+
+            <div class="preview-notes-staggered">
+              <div class="preview-note-card c-amber">
+                <div class="preview-note-title">🪐 Orbital Physics</div>
+                <div class="preview-note-body">Bézier trajectory vectors calculated for the next mission staging...</div>
+              </div>
+              <div class="preview-note-card c-emerald">
+                <div class="preview-note-title">✓ Sprint Checklist</div>
+                <div class="preview-note-body">☑ Jetpack Compose M3<br />☑ AES-256-GCM backup<br />☐ Unit verification</div>
+              </div>
+              <div class="preview-note-card c-purple">
+                <div class="preview-note-title">🔐 Encrypted Vault</div>
+                <div class="preview-note-body">PBKDF2 key derivation with 100,000 salt iterations...</div>
+              </div>
+              <div class="preview-note-card c-cyan">
+                <div class="preview-note-title">🎨 Sketch Canvas</div>
+                <div class="preview-note-body">Handwritten notes stored as lossless vector strokes.</div>
+              </div>
+            </div>
+
+            <div style="margin-top:14px;padding:8px;background:#182234;border-radius:12px;display:flex;justify-content:space-around;color:#94a3b8;font-size:16px;">
+              <i class="fa-solid fa-pen-to-square" style="color:#6366f1;"></i>
+              <i class="fa-solid fa-folder"></i>
+              <i class="fa-solid fa-paintbrush"></i>
+              <i class="fa-solid fa-gear"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEATURES SECTION ═══════════════ -->
+<section id="features" aria-label="Features" style="padding:var(--space-16) 0;">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Capabilities</p>
+      <h2 class="section-title">Crafted for Pure <span class="gradient-text">Productivity</span></h2>
+      <p class="section-subtitle">A modern offline note-taking powerhouse inspired by Google Keep and Samsung Notes with zero tracking.</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card reveal delay-1">
+        <div class="feature-icon" style="color:#10b981;"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3 class="feature-title">100% Offline &amp; Private</h3>
+        <p class="feature-desc"><code>android.permission.INTERNET</code> is completely absent from the Android manifest. Zero telemetry, zero analytics SDKs, zero advertisements, and zero cloud tracking.</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card reveal delay-2">
+        <div class="feature-icon" style="color:#f59e0b;"><i class="fa-solid fa-lock"></i></div>
+        <h3 class="feature-title">AES-256-GCM Encrypted Backups</h3>
+        <p class="feature-desc">Export client-side password-protected backup archives authenticated with AES-256-GCM and PBKDF2-HMAC-SHA256 (100,000 iterations). Your data belongs strictly to you.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card reveal delay-3">
+        <div class="feature-icon" style="color:#6366f1;"><i class="fa-solid fa-pen-nib"></i></div>
+        <h3 class="feature-title">Rich Text &amp; Interactive Checklists</h3>
+        <p class="feature-desc">Bold, italic, underline, strikethrough, headings, bullet points, numbered lists, and interactive checklists with dynamic completion progress bars.</p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card reveal delay-4">
+        <div class="feature-icon" style="color:#06b6d4;"><i class="fa-solid fa-paintbrush"></i></div>
+        <h3 class="feature-title">Vector Handwriting &amp; Canvas</h3>
+        <p class="feature-desc">Natural handwriting and sketching canvas with quadratic Bézier stroke smoothing, color picker, adjustable stroke width, and full undo/redo history.</p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="feature-card reveal delay-5">
+        <div class="feature-icon" style="color:#a855f7;"><i class="fa-solid fa-folder-tree"></i></div>
+        <h3 class="feature-title">Folders, Tags &amp; Pinning</h3>
+        <p class="feature-desc">Organize your thought library with customizable color-badged folders, hashtags, note pinning to keep priorities at top, and multi-select batch actions.</p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="feature-card reveal delay-6">
+        <div class="feature-icon" style="color:#ec4899;"><i class="fa-solid fa-trash-arrow-up"></i></div>
+        <h3 class="feature-title">Soft-Delete Trash Bin</h3>
+        <p class="feature-desc">Safely recover accidentally deleted notes from the integrated recycle bin, or purge them permanently when you're completely done.</p>
+      </div>
+
+      <!-- Feature 7 -->
+      <div class="feature-card reveal delay-7">
+        <div class="feature-icon" style="color:#38bdf8;"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3 class="feature-title">Instant Tokenized Live Search</h3>
+        <p class="feature-desc">Real-time debounced search indexing titles, note bodies, and folder tags with zero typing lag.</p>
+      </div>
+
+      <!-- Feature 8 -->
+      <div class="feature-card reveal delay-8">
+        <div class="feature-icon" style="color:#7F52FF;"><i class="devicon-kotlin-plain colored"></i></div>
+        <h3 class="feature-title">Native Kotlin 2.0 &amp; Room</h3>
+        <p class="feature-desc">Modern Jetpack architecture with Room SQLite database, transactional integrity, and DataStore Preferences for settings.</p>
+      </div>
+
+      <!-- Feature 9 -->
+      <div class="feature-card reveal delay-1">
+        <div class="feature-icon" style="color:#fbbf24;"><i class="fa-solid fa-palette"></i></div>
+        <h3 class="feature-title">Dual Themes (OLED &amp; Pastel)</h3>
+        <p class="feature-desc">True black OLED Obsidian theme for midnight power saving and soft Google Keep-inspired pastel color palette for daylight clarity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SCREENSHOTS GALLERY ═══════════════ -->
+<section id="screenshots" aria-label="Screenshots" style="padding:var(--space-16) 0;background:var(--bg-surface);">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Visual Tour</p>
+      <h2 class="section-title">Physical Device <span class="gradient-text">Screenshots</span></h2>
+      <p class="section-subtitle">Captured directly from an Android 14 test device running the production APK build.</p>
+    </div>
+
+    <div class="screenshot-grid">
+      <!-- Screenshot 1 -->
+      <div class="screenshot-card reveal delay-1">
+        <div class="phone-frame">
+          <img src="screenshots/02-home-with-notes.png" alt="Notes Home Screen Staggered Grid" loading="lazy" />
+        </div>
+        <h3 class="screenshot-title">Staggered Notes Grid</h3>
+        <p class="screenshot-caption">Color-coded note cards, folder pills, and quick floating action button.</p>
+      </div>
+
+      <!-- Screenshot 2 -->
+      <div class="screenshot-card reveal delay-2">
+        <div class="phone-frame">
+          <img src="screenshots/03-note-editor.png" alt="Notes Editor with Rich Formatting" loading="lazy" />
+        </div>
+        <h3 class="screenshot-title">Distraction-Free Editor</h3>
+        <p class="screenshot-caption">High-contrast typography, live word count, and quick format toolbar.</p>
+      </div>
+
+      <!-- Screenshot 3 -->
+      <div class="screenshot-card reveal delay-3">
+        <div class="phone-frame">
+          <img src="screenshots/04-rich-text.png" alt="Notes Checklists & Rich Formatting" loading="lazy" />
+        </div>
+        <h3 class="screenshot-title">Checklists &amp; Formatting</h3>
+        <p class="screenshot-caption">Interactive checklist toggles with automatic strike-through styling.</p>
+      </div>
+
+      <!-- Screenshot 4 -->
+      <div class="screenshot-card reveal delay-4">
+        <div class="phone-frame">
+          <img src="screenshots/05-folders.png" alt="Notes Folders Management" loading="lazy" />
+        </div>
+        <h3 class="screenshot-title">Folders &amp; Categories</h3>
+        <p class="screenshot-caption">Custom color badges and note count trackers for every folder.</p>
+      </div>
+
+      <!-- Screenshot 5 -->
+      <div class="screenshot-card reveal delay-5">
+        <div class="phone-frame">
+          <img src="screenshots/06-search-results.png" alt="Notes Instant Live Search" loading="lazy" />
+        </div>
+        <h3 class="screenshot-title">Instant Live Search</h3>
+        <p class="screenshot-caption">Real-time keyword filtering across titles, bodies, and tags.</p>
+      </div>
+
+      <!-- Screenshot 6 -->
+      <div class="screenshot-card reveal delay-6">
+        <div class="phone-frame">
+          <img src="screenshots/07-drawing-editor.png" alt="Notes Vector Drawing & Sketch Canvas" loading="lazy" />
+        </div>
+        <h3 class="screenshot-title">Vector Sketch Canvas</h3>
+        <p class="screenshot-caption">Quadratic Bézier curve handwriting with customizable stroke widths.</p>
+      </div>
+
+      <!-- Screenshot 7 -->
+      <div class="screenshot-card reveal delay-7">
+        <div class="phone-frame">
+          <img src="screenshots/08-backup-screen.png" alt="Notes Backup & Export Screen" loading="lazy" />
+        </div>
+        <h3 class="screenshot-title">Encrypted Backup Vault</h3>
+        <p class="screenshot-caption">Client-side AES-256-GCM encrypted backup archive export &amp; import.</p>
+      </div>
+
+      <!-- Screenshot 8 -->
+      <div class="screenshot-card reveal delay-8">
+        <div class="phone-frame">
+          <img src="screenshots/11-dark-theme.png" alt="Notes OLED Obsidian Dark Theme" loading="lazy" />
+        </div>
+        <h3 class="screenshot-title">OLED Dark Mode</h3>
+        <p class="screenshot-caption">Deep obsidian background (#090D16) optimized for OLED battery life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECURITY & ENCRYPTION SECTION ═══════════════ -->
+<section id="security" aria-label="Privacy and Encryption" style="padding:var(--space-16) 0;">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Sovereignty</p>
+      <h2 class="section-title">Zero-Cloud <span class="gradient-text">Data Architecture</span></h2>
+      <p class="section-subtitle">How Notes protects your sensitive personal thoughts and records.</p>
+    </div>
+
+    <div class="glass-card reveal" style="padding:var(--space-8);max-width:880px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:var(--space-6);">
+        <div>
+          <h4 style="color:#10b981;font-size:var(--text-lg);margin-bottom:var(--space-2);">
+            <i class="fa-solid fa-ban" style="margin-right:8px;"></i> No Internet Permission
+          </h4>
+          <p style="color:var(--text-secondary);font-size:var(--text-sm);line-height:1.7;">
+            The app completely omits the Android network permission. Even if malicious code were injected, it physically cannot connect to any server or upload data.
+          </p>
+        </div>
+        <div>
+          <h4 style="color:#f59e0b;font-size:var(--text-lg);margin-bottom:var(--space-2);">
+            <i class="fa-solid fa-key" style="margin-right:8px;"></i> PBKDF2 Key Stretching
+          </h4>
+          <p style="color:var(--text-secondary);font-size:var(--text-sm);line-height:1.7;">
+            Your backup password passes through PBKDF2 with HMAC-SHA256 and 100,000 hashing rounds alongside a 16-byte cryptographically secure random salt.
+          </p>
+        </div>
+        <div>
+          <h4 style="color:#6366f1;font-size:var(--text-lg);margin-bottom:var(--space-2);">
+            <i class="fa-solid fa-lock" style="margin-right:8px;"></i> AES-256-GCM Authenticated
+          </h4>
+          <p style="color:var(--text-secondary);font-size:var(--text-sm);line-height:1.7;">
+            Galois/Counter Mode guarantees both confidentiality and authenticity. Backups cannot be tampered with or modified without triggering decryption verification failure.
+          </p>
+        </div>
+        <div>
+          <h4 style="color:#38bdf8;font-size:var(--text-lg);margin-bottom:var(--space-2);">
+            <i class="fa-solid fa-folder-open" style="margin-right:8px;"></i> Storage Access Framework (SAF)
+          </h4>
+          <p style="color:var(--text-secondary);font-size:var(--text-sm);line-height:1.7;">
+            Notes uses standard Android document pickers to export and import backups. No broad device storage access permissions are requested or required.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DOWNLOAD SECTION ═══════════════ -->
+<section id="download" aria-label="Download Notes APK" style="padding:var(--space-20) 0;background:var(--bg-surface);">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Get Notes</p>
+      <h2 class="section-title">Download &amp; <span class="gradient-text">Install</span></h2>
+      <p class="section-subtitle">Grab the official standalone Android release APK and experience private note-taking.</p>
+    </div>
+
+    <div class="download-card-hero reveal">
+      <div style="display:inline-block;padding:12px;background:rgba(99, 102, 241, 0.12);border-radius:24px;margin-bottom:var(--space-4);">
+        <img src="icons/notes.png" alt="Notes App Icon" width="90" height="90" style="border-radius:20px;" />
+      </div>
+      <h3 style="font-size:var(--text-2xl);margin-bottom:var(--space-2);">Notes v1.0.0 (Release APK)</h3>
+      <p style="color:var(--text-secondary);max-width:540px;margin:0 auto var(--space-6);">
+        Official standalone release APK signed and verified. Compatible with all Android smartphones, foldables, and tablets running Android 8.0 (API 26) through Android 14+ (API 34).
+      </p>
+
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;margin-bottom:var(--space-8);">
+        <a href="https://github.com/dev-hints/Notes/releases/download/v1.0.0/Notes-release.apk" download class="btn btn-primary btn-lg" style="box-shadow:0 0 28px rgba(99,102,241,0.4);">
+          <i class="fa-solid fa-download"></i> Download Notes-release.apk (12 MB)
+        </a>
+        <a href="docs.html" class="btn btn-outline btn-lg">
+          <span><i class="fa-solid fa-book"></i> Installation &amp; Build Guide</span>
+        </a>
+      </div>
+
+      <!-- Quick Installation Steps -->
+      <div style="background:var(--bg-card);border:var(--glass-border);border-radius:var(--radius-lg);padding:var(--space-6);text-align:left;">
+        <h4 style="font-size:var(--text-md);margin-bottom:var(--space-3);color:#fff;display:flex;align-items:center;gap:8px;">
+          <i class="fa-solid fa-circle-check" style="color:#10b981"></i> Quick Installation Guide:
+        </h4>
+        <ol style="margin:0;padding-left:1.5rem;color:var(--text-secondary);font-size:var(--text-sm);line-height:1.8;">
+          <li>Download the <code>Notes-release.apk</code> package to your Android phone or tablet.</li>
+          <li>Tap the downloaded file in your browser or notification shade to begin installation.</li>
+          <li>If prompted by Android, grant permission to "Install Unknown Apps" for your file manager or browser.</li>
+          <li>Open Notes and start capturing ideas immediately — 100% offline, zero setup required.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo" aria-label="StrangeInfinity home">
+          <img src="../assets/images/logo-icon.png" alt="StrangeInfinity" width="36" height="36" loading="lazy" />
+          <span class="footer-logo-name">StrangeInfinity</span>
+        </a>
+        <p class="footer-tagline">Notes by StrangeInfinity — Private, offline-first Android note-taking with vector sketch canvas.</p>
+        <div class="footer-social">
+          <a href="https://github.com/strangeinfinity/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://x.com/strang3infinity" target="_blank" rel="noopener noreferrer" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://in.linkedin.com/in/ayush-kumar-maurya/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Documentation</p>
+        <nav class="footer-links" aria-label="Documentation links">
+          <a href="docs.html#overview">Overview &amp; Features</a>
+          <a href="docs.html#architecture">Clean Architecture &amp; Room</a>
+          <a href="docs.html#encryption">AES-256-GCM Backup Crypto</a>
+          <a href="docs.html#drawing">Vector Handwriting Engine</a>
+          <a href="docs.html#building">Building from Source</a>
+          <a href="#download">Download APK</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">StrangeInfinity Suite</p>
+        <nav class="footer-links" aria-label="Projects navigation">
+          <a href="../store/" style="color:var(--color-primary-light);font-weight:700;"><i class="fa-solid fa-bag-shopping"></i> App Store</a>
+          <a href="../Dedroid/">Dedroid Debian for Android</a>
+          <a href="../2048-Infinity/">2048-Infinity Android Game</a>
+          <a href="../MarkView/">MarkView Desktop Reader</a>
+          <a href="../MyDrive/">MyDrive Cloud Storage</a>
+          <a href="../Infinity-Browser/">Infinity Browser</a>
+          <a href="../AirPointer/">AirPointer Virtual Mouse</a>
+          <a href="../index.html#projects">All Projects</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 <a href="https://www.strangeinfinity.store/">StrangeInfinity</a>. Open-source &amp; built with <i class="fa-solid fa-heart" style="color:#ef4444"></i> and ∞ curiosity.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Back to Top Button -->
+<button id="back-to-top" aria-label="Scroll back to top" title="Back to top">↑</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/particles.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
+    ParticleEngine.init();
+
+    // Sticky Navbar & Back to Top Button
+    const navbar = document.getElementById('navbar');
+    const btt = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
+      if (btt) btt.classList.toggle('visible', scrollY > 500);
+    }, { passive: true });
+
+    if (btt) {
+      btt.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Hamburger Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+
+    // Scroll Reveal Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+</body>
+</html>

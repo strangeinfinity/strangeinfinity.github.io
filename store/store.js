@@ -9,6 +9,68 @@
 
 const APPS_DATA = [
   {
+    id: 'notes',
+    name: 'Notes',
+    tagline: 'Private Offline Android Note-Taking with Jetpack Compose',
+    category: 'android',
+    categoryName: 'Android Apps',
+    platforms: ['android'],
+    platformBadge: 'Android 8.0+',
+    badge: 'Android App',
+    size: '12 MB',
+    sizeBytes: 12582912,
+    version: 'v1.0.0',
+    icon: '../Notes/icons/notes.png',
+    summary: 'A complete, production-quality, offline-first Android note-taking application engineered with Kotlin, Jetpack Compose Material 3, and Android Room. Features rich text formatting, interactive checklists, vector drawing canvas, folders, tags, and client-side AES-256-GCM encrypted backups.',
+    highlights: [
+      '100% offline with zero internet permissions, zero tracking, and zero ads',
+      'Engineered in native Kotlin 2.0 & Jetpack Compose Material 3',
+      'Client-side AES-256-GCM encrypted backups with PBKDF2 key stretching',
+      'Rich text styling, markdown formatting, & interactive checklists',
+      'Smooth vector handwriting & sketch canvas with quadratic Bézier curves',
+      'Color-coded folders, tags, pinning, instant search, and trash recycle bin'
+    ],
+    screenshots: [
+      { src: '../Notes/screenshots/02-home-with-notes.png', title: 'Staggered Notes Grid & Categories' },
+      { src: '../Notes/screenshots/03-note-editor.png', title: 'Distraction-Free Note Editor' },
+      { src: '../Notes/screenshots/04-rich-text.png', title: 'Rich Text & Interactive Checklists' },
+      { src: '../Notes/screenshots/05-folders.png', title: 'Folder Organization & Color Badges' },
+      { src: '../Notes/screenshots/06-search-results.png', title: 'Instant Live Search' },
+      { src: '../Notes/screenshots/07-drawing-editor.png', title: 'Vector Drawing & Sketch Canvas' },
+      { src: '../Notes/screenshots/08-backup-screen.png', title: 'AES-256-GCM Encrypted Backup Vault' },
+      { src: '../Notes/screenshots/11-dark-theme.png', title: 'OLED Obsidian Dark Mode' },
+      { src: '../Notes/screenshots/12-settings.png', title: 'App Settings & Customization' }
+    ],
+    primaryDownload: {
+      label: 'Download APK',
+      url: 'https://github.com/dev-hints/Notes/releases/download/v1.0.0/Notes-release.apk',
+      format: 'APK',
+      size: '12 MB'
+    },
+    packages: [
+      {
+        name: 'Official Signed Release APK',
+        url: 'https://github.com/dev-hints/Notes/releases/download/v1.0.0/Notes-release.apk',
+        arch: 'Android 8.0+ (Universal ARM64 / x86_64)',
+        size: '12 MB',
+        recommended: true
+      },
+      {
+        name: 'Source Code Package (.zip)',
+        url: 'https://github.com/dev-hints/Notes/archive/refs/heads/main.zip',
+        arch: 'Kotlin Source Code',
+        size: '1.2 MB',
+        recommended: false
+      }
+    ],
+    keywords: ['notes', 'android', 'apk', 'kotlin', 'compose', 'material3', 'room', 'offline', 'encryption', 'aes-256', 'drawing', 'sketch', 'checklists', 'folders', 'privacy', 'samsung notes', 'keep'],
+    portalUrl: '../Notes/',
+    docsUrl: '../Notes/docs.html',
+    githubUrl: 'https://github.com/dev-hints/Notes',
+    license: 'Open Source',
+    featured: true
+  },
+  {
     id: 'dedroid',
     name: 'Dedroid',
     tagline: 'Linux Terminal & Coding Environment for Android',
