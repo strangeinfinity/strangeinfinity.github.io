@@ -1,232 +1,222 @@
 /**
- * StrangeInfinity — Particle & Starfield Engine
+ * StrangeInfinity — Vedic Sacred Geometry & Cosmic Bindu Engine
  * assets/js/particles.js
  *
- * Highly optimized, 60fps mobile-ready cosmic particle background.
+ * Ultra-fast 60/120fps hardware-accelerated canvas background.
+ * Renders ancient sacred geometry orbits (Golden Ratio / Sri Yantra harmonics)
+ * and floating constellation bindu nodes. Zero lag, low CPU/battery consumption.
  */
 
 const ParticleEngine = (() => {
   let canvas, ctx, W, H, animId;
-  let mouse = { x: 0, y: 0 };
+  let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
   let isMobile = false;
+  let isPaused = false;
+  let currentTheme = 'dark';
 
-  // ── Dynamic Mobile-Aware Configuration ──
-  const CFG = {
-    starCount:      80,
-    nebulaCount:    3,
-    connectionDist: 90,
-    mouseRadius:    160,
-    shootInterval:  5000,
+  // ── Vedic Color Palettes ──
+  const PALETTES = {
+    dark: {
+      bindu:   ['rgba(212,175,55,', 'rgba(229,169,60,', 'rgba(200,100,40,', 'rgba(243,198,105,'],
+      line:    'rgba(212,175,55,',
+      ring:    'rgba(212,175,55,0.06)',
+      ringAlt: 'rgba(200,100,40,0.04)',
+    },
+    light: {
+      bindu:   ['rgba(180,83,9,', 'rgba(217,119,6,', 'rgba(154,52,18,', 'rgba(194,65,12,'],
+      line:    'rgba(180,83,9,',
+      ring:    'rgba(180,83,9,0.05)',
+      ringAlt: 'rgba(154,52,18,0.03)',
+    }
   };
 
-  // ── Data arrays ──
-  let stars = [];
-  let nebulae = [];
-  let shootingStars = [];
+  // ── Bindus (Nodes) ──
+  let bindus = [];
+  const BINDU_COUNT_DESKTOP = 45;
+  const BINDU_COUNT_MOBILE  = 22;
+  const CONNECTION_DIST     = 100;
 
-  // ── Utility helpers ──
-  const rand    = (a, b) => Math.random() * (b - a) + a;
-  const randInt = (a, b) => Math.floor(rand(a, b + 1));
-
-  // ── Color helpers ──
-  const COLORS = ['rgba(99,102,241,', 'rgba(6,182,212,', 'rgba(236,72,153,', 'rgba(129,140,248,'];
-  const starColor = () => COLORS[randInt(0, COLORS.length - 1)];
-
-  // ── Star class ──
-  class Star {
+  class Bindu {
     constructor() { this.reset(); }
     reset() {
-      this.x     = rand(0, W);
-      this.y     = rand(0, H);
-      this.z     = rand(0.1, 1);
-      this.r     = rand(0.5, 1.6) * this.z;
-      this.color = starColor();
-      this.alpha = rand(0.2, 0.9);
-      this.alphaDir = rand(-0.003, 0.003);
-      this.vx   = rand(-0.04, 0.04) * this.z;
-      this.vy   = rand(-0.02, 0.02) * this.z;
+      this.x     = Math.random() * W;
+      this.y     = Math.random() * H;
+      this.r     = Math.random() * 1.5 + 0.8;
+      this.vx    = (Math.random() - 0.5) * 0.25;
+      this.vy    = (Math.random() - 0.5) * 0.25;
+      this.alpha = Math.random() * 0.5 + 0.2;
+      this.alphaSpeed = (Math.random() - 0.5) * 0.005;
+      const pal = PALETTES[currentTheme] || PALETTES.dark;
+      this.color = pal.bindu[Math.floor(Math.random() * pal.bindu.length)];
     }
     update() {
       this.x += this.vx;
       this.y += this.vy;
-      this.alpha += this.alphaDir;
-      if (this.alpha <= 0.1 || this.alpha >= 1) this.alphaDir *= -1;
+      this.alpha += this.alphaSpeed;
+      if (this.alpha < 0.15 || this.alpha > 0.8) this.alphaSpeed *= -1;
 
-      if (!isMobile) {
-        const dx = (mouse.x / W - 0.5) * this.z * 0.4;
-        const dy = (mouse.y / H - 0.5) * this.z * 0.4;
-        this.x += dx;
-        this.y += dy;
-      }
-
-      if (this.x < -5) this.x = W + 5;
-      if (this.x > W + 5) this.x = -5;
-      if (this.y < -5) this.y = H + 5;
-      if (this.y > H + 5) this.y = -5;
+      // Wrap around edges
+      if (this.x < -10) this.x = W + 10;
+      if (this.x > W + 10) this.x = -10;
+      if (this.y < -10) this.y = H + 10;
+      if (this.y > H + 10) this.y = -10;
     }
     draw() {
-      ctx.globalAlpha = this.alpha;
-      ctx.fillStyle   = this.color + this.alpha + ')';
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + this.alpha + ')';
       ctx.fill();
     }
   }
 
-  // ── Nebula class ──
-  class Nebula {
-    constructor() {
-      this.x        = rand(0, W);
-      this.y        = rand(0, H);
-      this.r        = rand(100, 220);
-      this.color    = COLORS[randInt(0, COLORS.length - 1)];
-      this.alpha    = rand(0.02, 0.08);
-      this.alphaDir = rand(-0.0002, 0.0002);
-      this.dx       = rand(-0.06, 0.06);
-      this.dy       = rand(-0.03, 0.03);
-    }
-    update() {
-      this.x += this.dx;
-      this.y += this.dy;
-      this.alpha += this.alphaDir;
-      if (this.alpha <= 0.01 || this.alpha >= 0.1) this.alphaDir *= -1;
-      if (this.x + this.r < 0)  this.x = W + this.r;
-      if (this.x - this.r > W)  this.x = -this.r;
-      if (this.y + this.r < 0)  this.y = H + this.r;
-      if (this.y - this.r > H)  this.y = -this.r;
-    }
-    draw() {
-      const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
-      g.addColorStop(0, this.color + this.alpha + ')');
-      g.addColorStop(1, this.color + '0)');
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
+  // ── Sacred Geometry Orbital Concentric Rings ──
+  let orbitAngle = 0;
+  function drawSacredOrbits() {
+    const pal = PALETTES[currentTheme] || PALETTES.dark;
+    const centerX = W * 0.5 + (mouse.x - W * 0.5) * 0.04;
+    const centerY = Math.min(H * 0.38, 360) + (mouse.y - H * 0.38) * 0.04;
 
-  // ── Shooting Star ──
-  class ShootingStar {
-    constructor() {
-      this.x    = rand(0, W * 0.7);
-      this.y    = rand(0, H * 0.4);
-      this.len  = rand(60, 140);
-      this.spd  = rand(8, 14);
-      this.ang  = 0.5;
-      this.life = 1;
-      this.dec  = rand(0.02, 0.04);
-    }
-    update() { this.life -= this.dec; this.x += this.spd; this.y += this.spd * 0.4; }
-    draw() {
-      const tail = Math.cos(this.ang) * this.len;
-      const tailY = Math.sin(this.ang) * this.len;
-      const g = ctx.createLinearGradient(this.x - tail, this.y - tailY, this.x, this.y);
-      g.addColorStop(0, `rgba(255,255,255,0)`);
-      g.addColorStop(1, `rgba(129,140,248,${this.life * 0.8})`);
-      ctx.strokeStyle = g;
-      ctx.lineWidth   = 1.2 * this.life;
+    // Golden Ratio harmonic radii: r, r * 1.618, r * 2.618
+    const baseRadius = Math.min(W, H) * 0.16;
+    const radii = [
+      baseRadius * 0.618,
+      baseRadius,
+      baseRadius * 1.618,
+      baseRadius * 2.618
+    ];
+
+    ctx.save();
+    ctx.translate(centerX, centerY);
+
+    // Subtle concentric orbits
+    radii.forEach((r, idx) => {
       ctx.beginPath();
-      ctx.moveTo(this.x - tail, this.y - tailY);
-      ctx.lineTo(this.x, this.y);
+      ctx.arc(0, 0, r, 0, Math.PI * 2);
+      ctx.strokeStyle = idx % 2 === 0 ? pal.ring : pal.ringAlt;
+      ctx.lineWidth = 1;
       ctx.stroke();
-    }
-    isDead() { return this.life <= 0; }
+    });
+
+    // Rotating sacred geometry arc markers
+    ctx.rotate(orbitAngle);
+    ctx.beginPath();
+    ctx.arc(0, 0, radii[1], 0, Math.PI * 0.35);
+    ctx.arc(0, 0, radii[1], Math.PI, Math.PI * 1.35);
+    ctx.strokeStyle = pal.ring;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.restore();
   }
 
-  // ── Draw connection lines between stars ──
-  function drawConnections() {
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const limit = stars.length;
-    for (let i = 0; i < limit; i++) {
-      for (let j = i + 1; j < limit; j++) {
-        const dx   = stars[i].x - stars[j].x;
-        const dy   = stars[i].y - stars[j].y;
+  // ── Render Loop ──
+  function render() {
+    if (isPaused) return;
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Mouse easing
+    mouse.x += (mouse.targetX - mouse.x) * 0.05;
+    mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+    // 1. Draw Sacred Geometry Rings
+    orbitAngle += 0.0008;
+    drawSacredOrbits();
+
+    // 2. Draw Constellation Connecting Threads
+    const pal = PALETTES[currentTheme] || PALETTES.dark;
+    const len = bindus.length;
+    for (let i = 0; i < len; i++) {
+      for (let j = i + 1; j < len; j++) {
+        const dx = bindus[i].x - bindus[j].x;
+        const dy = bindus[i].y - bindus[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < CFG.connectionDist) {
-          const alpha = (1 - dist / CFG.connectionDist) * (isLight ? 0.04 : 0.06);
-          ctx.strokeStyle = isLight ? `rgba(79,70,229,${alpha})` : `rgba(99,102,241,${alpha})`;
-          ctx.lineWidth   = 0.5;
+
+        if (dist < CONNECTION_DIST) {
+          const alpha = (1 - dist / CONNECTION_DIST) * 0.18;
           ctx.beginPath();
-          ctx.moveTo(stars[i].x, stars[i].y);
-          ctx.lineTo(stars[j].x, stars[j].y);
+          ctx.moveTo(bindus[i].x, bindus[i].y);
+          ctx.lineTo(bindus[j].x, bindus[j].y);
+          ctx.strokeStyle = pal.line + alpha + ')';
+          ctx.lineWidth = 0.8;
           ctx.stroke();
         }
       }
     }
-  }
 
-  // ── Main render loop ──
-  function render() {
-    ctx.clearRect(0, 0, W, H);
-
-    nebulae.forEach(n => { n.update(); n.draw(); });
-    drawConnections();
-    stars.forEach(s => { s.update(); s.draw(); });
-
-    shootingStars = shootingStars.filter(ss => !ss.isDead());
-    shootingStars.forEach(ss => { ss.update(); ss.draw(); });
+    // 3. Update & Draw Bindu Nodes
+    bindus.forEach(b => {
+      b.update();
+      b.draw();
+    });
 
     animId = requestAnimationFrame(render);
   }
 
-  // ── Resize handler ──
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+  // ── Resize Handler ──
+  function onResize() {
+    if (!canvas) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+
     isMobile = W < 768;
+    const targetCount = isMobile ? BINDU_COUNT_MOBILE : BINDU_COUNT_DESKTOP;
 
-    CFG.starCount      = isMobile ? 35 : 75;
-    CFG.nebulaCount    = isMobile ? 2  : 3;
-    CFG.connectionDist = isMobile ? 60 : 90;
-
-    mouse = { x: W / 2, y: H / 2 };
-
-    stars   = Array.from({ length: CFG.starCount }, () => new Star());
-    nebulae = Array.from({ length: CFG.nebulaCount }, () => new Nebula());
+    bindus = [];
+    for (let i = 0; i < targetCount; i++) {
+      bindus.push(new Bindu());
+    }
   }
 
-  // ── Shoot periodic star ──
-  let shootTimer;
-  function scheduleShoot() {
-    shootTimer = setInterval(() => {
-      if (shootingStars.length < 2) shootingStars.push(new ShootingStar());
-    }, isMobile ? 8000 : 5000);
+  // ── Mouse Move Parallax ──
+  function onMouseMove(e) {
+    mouse.targetX = e.clientX;
+    mouse.targetY = e.clientY;
   }
 
-  // ── Public API ──
+  // ── Initialization ──
   function init() {
     canvas = document.getElementById('particle-canvas');
     if (!canvas) return;
     ctx = canvas.getContext('2d', { alpha: true });
-    resize();
 
-    window.addEventListener('resize', resize, { passive: true });
-    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
-    window.addEventListener('touchmove', e => {
-      if (e.touches.length) {
-        mouse.x = e.touches[0].clientX;
-        mouse.y = e.touches[0].clientY;
-      }
-    }, { passive: true });
+    const docTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    currentTheme = docTheme;
 
+    onResize();
+    window.addEventListener('resize', onResize, { passive: true });
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+
+    // Listen to theme changes
+    window.addEventListener('themechange', (e) => {
+      currentTheme = e.detail && e.detail.theme ? e.detail.theme : 'dark';
+      bindus.forEach(b => {
+        const pal = PALETTES[currentTheme] || PALETTES.dark;
+        b.color = pal.bindu[Math.floor(Math.random() * pal.bindu.length)];
+      });
+    });
+
+    // Pause when tab is hidden to save 100% CPU/battery
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
+        isPaused = true;
         cancelAnimationFrame(animId);
       } else {
-        render();
+        isPaused = false;
+        animId = requestAnimationFrame(render);
       }
     });
 
-    scheduleShoot();
-    render();
+    // Start render
+    isPaused = false;
+    animId = requestAnimationFrame(render);
   }
 
-  function destroy() {
-    cancelAnimationFrame(animId);
-    clearInterval(shootTimer);
-    window.removeEventListener('resize', resize);
-  }
-
-  return { init, destroy };
+  return { init };
 })();

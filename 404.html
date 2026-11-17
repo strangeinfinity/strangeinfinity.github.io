@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCEZHSD62X"></script>
@@ -11,6 +11,7 @@
   </script>
 
   <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/vedic-logo-icon.svg" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png" />
@@ -76,12 +77,12 @@
   <meta name="description" content="The cosmic coordinate you are seeking does not exist or has drifted beyond the event horizon. Return to StrangeInfinity." />
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="https://www.strangeinfinity.store/404.html" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta name="theme-color" content="#070604" />
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Marcellus&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- CSS -->
@@ -104,15 +105,15 @@
       z-index: 1;
     }
     .error-code {
-      font-family: var(--font-mono);
+      font-family: var(--font-serif);
       font-size: clamp(5rem, 15vw, 10rem);
       font-weight: 800;
       line-height: 1;
       margin-bottom: var(--space-2);
-      background: linear-gradient(135deg, var(--color-primary-light), var(--color-cyan), var(--color-pink));
+      background: var(--gradient-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 40px rgba(99,102,241,0.3));
+      filter: drop-shadow(0 0 30px rgba(var(--color-primary-rgb), 0.3));
     }
     .error-tag {
       font-family: var(--font-mono);
@@ -178,8 +179,9 @@
     <nav id="navbar" role="navigation" aria-label="Main navigation">
       <div class="container nav-inner">
         <a href="/" class="nav-logo" aria-label="StrangeInfinity Home">
-          <img src="/assets/images/logo-icon.png" alt="StrangeInfinity Logo" width="38" height="38" />
-          <span class="nav-logo-text">StrangeInfinity</span>
+          <img src="/assets/images/vedic-logo-icon.svg" alt="StrangeInfinity Logo" width="34" height="34" />
+          <span class="nav-logo-text">Strange<span style="color:var(--color-primary-light)">Infinity</span></span>
+          <span class="nav-logo-sanskrit">॥ अनन्तः ॥</span>
         </a>
         <div class="nav-actions">
           <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle Theme">
@@ -223,14 +225,50 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="footer-bottom" style="border-top: var(--glass-border); padding: var(--space-6) 0;">
-        <p class="footer-copy">© 2026 <a href="https://www.strangeinfinity.store/">StrangeInfinity</a>. Open-source under MIT License.</p>
+  <!-- ═══════════════ ULTRA-COMPACT CENTERED PILL FOOTER ═══════════════ -->
+<footer role="contentinfo" class="site-footer">
+  <div class="footer-pill">
+    <a href="/" class="pill-brand" aria-label="StrangeInfinity Home">
+      <img src="/assets/images/vedic-logo-icon.svg" alt="StrangeInfinity" width="20" height="20" loading="lazy" />
+      <span>Strange<span>Infinity</span></span>
+    </a>
+    <span class="pill-sep">&middot;</span>
+    <nav class="pill-links" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/store/">Store</a>
+      <a href="https://github.com/strangeinfinity" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:strangeinfinity.dev@gmail.com">Contact</a>
+    </nav>
+    <span class="pill-sep">&middot;</span>
+    <span class="pill-copy">&copy; 2026</span>
+  </div>
+</footer>
+
+  <!-- ═══════════════ MOBILE APPLICATION DOCK (NATIVE APP UI) ═══════════════ -->
+  <nav id="mobile-app-dock" class="mobile-app-dock" aria-label="Mobile Navigation Dock">
+    <a href="/" class="dock-tab" aria-label="Home">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="/store/" class="dock-tab dock-store" aria-label="App Store">
+      <div class="dock-icon-wrap">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="dock-dot"></span>
       </div>
-    </div>
-  </footer>
+      <span>Store</span>
+    </a>
+    <a href="/#projects" class="dock-tab" aria-label="Repositories">
+      <i class="fa-solid fa-code"></i>
+      <span>Repos</span>
+    </a>
+    <a href="/#contact" class="dock-tab" aria-label="Contact">
+      <i class="fa-solid fa-envelope"></i>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <!-- Ephemeral Vedic Toast Notification -->
+  <div id="vedic-toast" class="vedic-toast" role="status" aria-live="polite"></div>
 
   <!-- Scripts -->
   <script src="/assets/js/theme.js"></script>

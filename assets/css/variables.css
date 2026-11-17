@@ -1,64 +1,77 @@
 /* ==========================================================================
-   StrangeInfinity — CSS Design Tokens & Variables
-   variables.css
+   StrangeInfinity — Vedic Minimalist CSS Design Tokens & Themes
+   assets/css/variables.css
+   
+   Two Curated Ancient Vedic Themes:
+     1. Brahmanda (ब्रह्माण्ड — Cosmic Vedic Obsidian & Sacred Gold) [Dark]
+     2. Bhurjapatra (भूर्जपत्र — Birch Bark Parchment & Terracotta) [Light]
    ========================================================================== */
 
-/* ── Dark Theme (default) ── */
+/* ── Brahmanda (Dark Theme — Default) ── */
 :root {
-  /* Brand Colors */
-  --color-primary:       #6366f1;  /* indigo-500 */
-  --color-primary-light: #818cf8;  /* indigo-400 */
-  --color-primary-glow:  #a5b4fc;  /* indigo-300 */
-  --color-secondary:     #06b6d4;  /* cyan-500   */
-  --color-secondary-light: #22d3ee; /* cyan-400  */
-  --color-accent:        #ec4899;  /* pink-500   */
-  --color-accent-glow:   #f472b6;  /* pink-400   */
+  /* Theme Identity */
+  --theme-name: 'Brahmanda';
+  --theme-sanskrit: 'ब्रह्माण्ड';
 
-  /* Background */
-  --bg-base:             #0b0f19;  /* deep obsidian slate */
-  --bg-surface:          #0f172a;  /* slate-900 surface */
-  --bg-elevated:         #1e293b;  /* slate-800 elevated */
-  --bg-glass:            rgba(15, 23, 42, 0.75);
-  --bg-glass-hover:      rgba(30, 41, 59, 0.85);
-  --bg-card:             rgba(15, 23, 42, 0.8);
-  --bg-overlay:          rgba(11, 15, 25, 0.88);
+  /* Sacred Vedic Brand Colors */
+  --color-primary:         #D4AF37;  /* Suvarna — Sacred Vedic Gold */
+  --color-primary-rgb:     212, 175, 55;
+  --color-primary-light:   #E5A93C;  /* Radiant Solar Amber */
+  --color-primary-glow:    #F3C669;  /* Golden Bindu Glow */
+  --color-primary-dark:    #B8860B;  /* Deep Temple Gold */
+  --color-secondary:       #C86428;  /* Tamra — Ancient Copper */
+  --color-secondary-light: #E07A5F;  /* Terracotta */
+  --color-accent:          #E11D48;  /* Kumkuma / Sacred Vermilion */
+  --color-accent-glow:     #F43F5E;
+  --color-vedic-amber:     #D97706;  /* Saffron Agni */
+  --color-vedic-turquoise: #0D9488;  /* Neelam Stone */
 
-  /* Text */
-  --text-primary:        #f8fafc;  /* slate-50 */
-  --text-secondary:      #cbd5e1;  /* slate-300 */
-  --text-muted:          #94a3b8;  /* slate-400 */
-  --text-inverse:        #0f172a;
+  /* Cosmic Background (Akasha & Himalayan Slate) */
+  --bg-base:               #08090C;  /* Primordial Cosmic Void */
+  --bg-surface:            #0E1118;  /* Himalayan Slate Surface */
+  --bg-elevated:           #151923;  /* Elevated Altar */
+  --bg-glass:              rgba(14, 17, 24, 0.82);
+  --bg-glass-hover:        rgba(22, 26, 36, 0.92);
+  --bg-card:               rgba(14, 17, 24, 0.88);
+  --bg-overlay:            rgba(8, 9, 12, 0.94);
 
-  /* Borders */
-  --border-color:        rgba(255, 255, 255, 0.08);
-  --border-hover:        rgba(99, 102, 241, 0.4);
-  --border-glow:         rgba(129, 140, 248, 0.5);
+  /* Sacred Typography Colors */
+  --text-primary:          #F5F3EC;  /* Shankha Shell Ivory */
+  --text-secondary:        #C8C2B3;  /* Aged Sandstone */
+  --text-muted:            #827C6E;  /* Vedic Slate */
+  --text-inverse:          #08090C;
+
+  /* Sacred Hairline Borders */
+  --border-color:          rgba(212, 175, 55, 0.15);
+  --border-hover:          rgba(229, 169, 60, 0.48);
+  --border-glow:           rgba(243, 198, 105, 0.6);
 
   /* Glassmorphism */
-  --glass-blur:          blur(16px);
-  --glass-blur-heavy:    blur(32px);
-  --glass-border:        1px solid rgba(255, 255, 255, 0.08);
-  --glass-border-hover:  1px solid rgba(99, 102, 241, 0.35);
+  --glass-blur:            blur(16px);
+  --glass-blur-heavy:      blur(28px);
+  --glass-border:          1px solid rgba(212, 175, 55, 0.15);
+  --glass-border-hover:    1px solid rgba(229, 169, 60, 0.45);
 
   /* Gradients */
-  --gradient-primary:    linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
-  --gradient-hero:       radial-gradient(ellipse at 30% 40%, rgba(99, 102, 241, 0.25) 0%, transparent 60%),
-                         radial-gradient(ellipse at 70% 60%, rgba(6, 182, 212, 0.18) 0%, transparent 55%),
-                         radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
-  --gradient-card:       linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(6, 182, 212, 0.03));
-  --gradient-shine:      linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
-  --gradient-text:       linear-gradient(135deg, #818cf8 0%, #22d3ee 50%, #f472b6 100%);
+  --gradient-primary:      linear-gradient(135deg, #D4AF37 0%, #C86428 100%);
+  --gradient-gold:         linear-gradient(135deg, #F3C669 0%, #D4AF37 50%, #B8860B 100%);
+  --gradient-hero:         radial-gradient(ellipse at 30% 35%, rgba(212, 175, 55, 0.14) 0%, transparent 60%),
+                           radial-gradient(ellipse at 75% 65%, rgba(200, 100, 40, 0.1) 0%, transparent 55%),
+                           radial-gradient(ellipse at 50% 50%, rgba(8, 9, 12, 0.85) 0%, transparent 80%);
+  --gradient-card:         linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(200, 100, 40, 0.02) 100%);
+  --gradient-shine:        linear-gradient(105deg, transparent 40%, rgba(212, 175, 55, 0.08) 50%, transparent 60%);
+  --gradient-text:         linear-gradient(135deg, #F3C669 0%, #E5A93C 35%, #E07A5F 70%, #D4AF37 100%);
 
-  /* Shadows */
-  --shadow-sm:           0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md:           0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-lg:           0 12px 40px rgba(0, 0, 0, 0.5);
-  --shadow-glow-primary: 0 0 24px rgba(99, 102, 241, 0.35);
-  --shadow-glow-cyan:    0 0 24px rgba(6, 182, 212, 0.35);
-  --shadow-glow-pink:    0 0 24px rgba(236, 72, 153, 0.35);
-  --shadow-card:         0 10px 30px -5px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  /* Sacred Glow & Shadows */
+  --shadow-sm:             0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md:             0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg:             0 12px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow-primary:   0 0 26px rgba(212, 175, 55, 0.28);
+  --shadow-glow-cyan:      0 0 26px rgba(200, 100, 40, 0.28);
+  --shadow-glow-pink:      0 0 26px rgba(225, 29, 72, 0.28);
+  --shadow-card:           0 8px 32px -4px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 175, 55, 0.12);
 
-  /* Spacing scale */
+  /* Spacing Scale */
   --space-1:  0.25rem;
   --space-2:  0.5rem;
   --space-3:  0.75rem;
@@ -73,11 +86,13 @@
   --space-24: 6rem;
   --space-32: 8rem;
 
-  /* Typography */
-  --font-sans:  'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-mono:  'JetBrains Mono', monospace;
-  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  /* Typography Stacks */
+  --font-sans:    'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Cinzel', 'Marcellus', 'Plus Jakarta Sans', Georgia, serif;
+  --font-vedic:   'Marcellus', 'Cinzel', serif;
+  --font-mono:    'JetBrains Mono', monospace;
 
+  /* Type Scale */
   --text-xs:   0.75rem;
   --text-sm:   0.875rem;
   --text-base: 1rem;
@@ -90,81 +105,94 @@
   --text-6xl:  3.75rem;
   --text-7xl:  4.5rem;
 
-  /* Border Radius */
-  --radius-sm:   6px;
-  --radius-md:   12px;
-  --radius-lg:   16px;
-  --radius-xl:   24px;
+  /* Border Radius (Minimal, Sculpted) */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   18px;
   --radius-full: 9999px;
 
-  /* Transitions */
-  --transition-fast:   all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow:   all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Transitions (Snappy, Fast, Smooth) */
+  --transition-fast:   all 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow:   all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Z-Index */
+  /* Z-Index Hierarchy */
   --z-base:    1;
   --z-card:    10;
   --z-nav:     100;
-  --z-overlay: 200;
-  --z-modal:   300;
+  --z-dock:    500;
+  --z-overlay: 1000;
+  --z-modal:   2000;
+  --z-toast:   3000;
   --z-top:     9999;
 
   /* Layout */
   --container-max: 1240px;
-  --nav-height:    72px;
-  --section-gap:   var(--space-24);
+  --nav-height:    68px;
+  --section-gap:   var(--space-20);
 }
 
-/* ── Light Theme ── */
+/* ── Bhurjapatra (Light Theme — Ancient Birch Bark & Terracotta) ── */
 [data-theme="light"] {
-  /* Brand Colors */
-  --color-primary:       #4f46e5;  /* indigo-600 */
-  --color-primary-light: #6366f1;  /* indigo-500 */
-  --color-primary-glow:  #818cf8;
-  --color-secondary:     #0891b2;  /* cyan-600 */
-  --color-secondary-light: #06b6d4;
-  --color-accent:        #db2777;  /* pink-600 */
-  --color-accent-glow:   #ec4899;
+  /* Theme Identity */
+  --theme-name: 'Bhurjapatra';
+  --theme-sanskrit: 'भूर्जपत्र';
 
-  /* Background */
-  --bg-base:             #f8fafc;  /* slate-50 studio canvas */
-  --bg-surface:          #ffffff;  /* pure white cards */
-  --bg-elevated:         #f1f5f9;  /* slate-100 */
-  --bg-glass:            rgba(255, 255, 255, 0.85);
-  --bg-glass-hover:      #ffffff;
-  --bg-card:             #ffffff;
-  --bg-overlay:          rgba(248, 250, 252, 0.92);
+  /* Sacred Brand Colors */
+  --color-primary:         #B45309;  /* Sacred Amber / Gerua */
+  --color-primary-rgb:     180, 83, 9;
+  --color-primary-light:   #D97706;  /* Saffron Gold */
+  --color-primary-glow:    #F59E0B;  /* Agni Glow */
+  --color-primary-dark:    #92400E;  /* Deep Ochre */
+  --color-secondary:       #9A3412;  /* Ancient Terracotta */
+  --color-secondary-light: #C2410C;  /* Warm Clay */
+  --color-accent:          #B91C1C;  /* Sindhoor Vermilion */
+  --color-accent-glow:     #DC2626;
+  --color-vedic-amber:     #B45309;
+  --color-vedic-turquoise: #0F766E;
 
-  /* Text */
-  --text-primary:        #0f172a;  /* slate-900 maximum contrast */
-  --text-secondary:      #334155;  /* slate-700 readable body */
-  --text-muted:          #64748b;  /* slate-500 crisp metadata */
-  --text-inverse:        #f8fafc;
+  /* Ancient Manuscript Backgrounds */
+  --bg-base:               #FAF7F0;  /* Birch Bark / Sacred Parchment */
+  --bg-surface:            #FFFFFF;  /* Temple Marble */
+  --bg-elevated:           #F2ECE0;  /* Aged Sandstone */
+  --bg-glass:              rgba(250, 247, 240, 0.88);
+  --bg-glass-hover:        #FFFFFF;
+  --bg-card:               #FFFFFF;
+  --bg-overlay:            rgba(250, 247, 240, 0.95);
+
+  /* Typography Colors */
+  --text-primary:          #1C1917;  /* Deep Lampblack Ink */
+  --text-secondary:        #44403C;  /* Warm Charcoal */
+  --text-muted:            #78716C;  /* Muted Sandstone */
+  --text-inverse:          #FAF7F0;
 
   /* Borders */
-  --border-color:        rgba(226, 232, 240, 0.9);
-  --border-hover:        rgba(99, 102, 241, 0.4);
-  --border-glow:         rgba(99, 102, 241, 0.5);
+  --border-color:          rgba(180, 83, 9, 0.16);
+  --border-hover:          rgba(180, 83, 9, 0.48);
+  --border-glow:           rgba(217, 119, 6, 0.5);
 
   /* Glassmorphism */
-  --glass-border:        1px solid rgba(226, 232, 240, 0.9);
-  --glass-border-hover:  1px solid rgba(99, 102, 241, 0.35);
+  --glass-border:          1px solid rgba(180, 83, 9, 0.16);
+  --glass-border-hover:    1px solid rgba(180, 83, 9, 0.45);
 
   /* Shadows */
-  --shadow-sm:           0 1px 3px rgba(15, 23, 42, 0.06);
-  --shadow-md:           0 4px 16px rgba(15, 23, 42, 0.07);
-  --shadow-lg:           0 12px 32px rgba(15, 23, 42, 0.09);
-  --shadow-glow-primary: 0 0 20px rgba(79, 70, 229, 0.15);
-  --shadow-glow-cyan:    0 0 20px rgba(8, 145, 178, 0.15);
-  --shadow-glow-pink:    0 0 20px rgba(219, 39, 119, 0.15);
-  --shadow-card:         0 8px 24px -4px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.8);
+  --shadow-sm:             0 1px 3px rgba(44, 34, 25, 0.05);
+  --shadow-md:             0 4px 16px rgba(44, 34, 25, 0.08);
+  --shadow-lg:             0 12px 32px rgba(44, 34, 25, 0.1);
+  --shadow-glow-primary:   0 0 20px rgba(180, 83, 9, 0.18);
+  --shadow-glow-cyan:      0 0 20px rgba(154, 52, 18, 0.18);
+  --shadow-glow-pink:      0 0 20px rgba(185, 28, 28, 0.18);
+  --shadow-card:           0 6px 20px -3px rgba(44, 34, 25, 0.07), 0 0 0 1px rgba(180, 83, 9, 0.14);
 
   /* Gradients */
-  --gradient-hero:       radial-gradient(ellipse at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 60%),
-                         radial-gradient(ellipse at 70% 60%, rgba(6, 182, 212, 0.08) 0%, transparent 55%),
-                         radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 70%);
-  --gradient-card:       linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 1));
-  --gradient-text:       linear-gradient(135deg, #4f46e5 0%, #0891b2 50%, #db2777 100%);
+  --gradient-primary:      linear-gradient(135deg, #B45309 0%, #9A3412 100%);
+  --gradient-gold:         linear-gradient(135deg, #D97706 0%, #B45309 100%);
+  --gradient-hero:         radial-gradient(ellipse at 30% 35%, rgba(180, 83, 9, 0.09) 0%, transparent 60%),
+                           radial-gradient(ellipse at 75% 65%, rgba(154, 52, 18, 0.07) 0%, transparent 55%),
+                           radial-gradient(ellipse at 50% 50%, rgba(250, 247, 240, 0.92) 0%, transparent 80%);
+  --gradient-card:         linear-gradient(135deg, #FFFFFF 0%, #FAF7F0 100%);
+  --gradient-shine:        linear-gradient(105deg, transparent 40%, rgba(180, 83, 9, 0.06) 50%, transparent 60%);
+  --gradient-text:         linear-gradient(135deg, #9A3412 0%, #B45309 45%, #C2410C 100%);
 }
